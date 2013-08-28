@@ -6,4 +6,5 @@ class PlatesController < ApplicationController
   def show
     @plate = Plate.find(params[:id])
   end
+
 end
