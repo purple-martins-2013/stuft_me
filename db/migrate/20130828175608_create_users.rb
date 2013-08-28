@@ -4,6 +4,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username
       t.string :token
       t.string :secret
+
+      t.timestamps
     end
   end
 end
