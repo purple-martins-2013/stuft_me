@@ -1,6 +1,7 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
+
 guard 'livereload' do
   watch(%r{app/views/.+\.(erb|haml|slim)$})
   watch(%r{app/helpers/.+\.rb})
@@ -8,6 +9,18 @@ guard 'livereload' do
   watch(%r{config/locales/.+\.yml})
   # Rails Assets Pipeline
   watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html))).*}) { |m| "/assets/#{m[3]}" }
+end
+
+
+guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
+  watch('config/application.rb')
+  watch('config/environment.rb')
+  watch('config/environments/test.rb')
+  watch(%r{^config/initializers/.+\.rb$})
+  watch('Gemfile.lock')
+  watch('spec/spec_helper.rb') { :rspec }
+  watch('test/test_helper.rb') { :test_unit }
+  watch(%r{features/support/}) { :cucumber }
 end
 
 guard :rspec do
@@ -22,7 +35,7 @@ guard :rspec do
   watch(%r{^spec/support/(.+)\.rb$})                  { "spec" }
   watch('config/routes.rb')                           { "spec/routing" }
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
-  watch(%r{^app/views/(.+)/})                        { |m| "spec/requests/#{m[1]}_spec.rb" }
+  watch(%r{^app/views/(.+)/})                        { |m| "spec/features/#{m[1]}_spec.rb" }
 
   # Capybara features specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/features/#{m[1]}_spec.rb" }
@@ -31,4 +44,5 @@ guard :rspec do
   watch(%r{^spec/acceptance/(.+)\.feature$})
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
 end
+
 

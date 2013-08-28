@@ -46,6 +46,8 @@ group :test do
   gem "factory_girl_rails"
   gem "capybara"
   gem "database_cleaner"
+  gem "spork", "> 0.9.0.rc"
+  gem "guard-spork"
 end
 
 # Use ActiveModel has_secure_password

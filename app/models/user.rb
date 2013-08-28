@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
-  has_many :images
+  has_many :plates
 
-  validates :username, presence: true
+  validates_presence_of :username
 
 end

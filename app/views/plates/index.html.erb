@@ -1,0 +1,8 @@
+<h1>STUFT</h1>
+
+<% @all_plates.each do |plate| %>
+  <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>
+  <p><%= plate.description %></p>
+<% end %>
+
+<!-- link_to image_tag("Search.png", :border => 0), {:action => 'search', :controller => 'pages'}, :class => 'dock-item' -->
