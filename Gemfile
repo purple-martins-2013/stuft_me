@@ -28,6 +28,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'instagram'
+# gem 'omniauth'
+gem 'omniauth-instagram'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
