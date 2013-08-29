@@ -12,7 +12,7 @@ $(document).ready(function() {
   $( "#dialog-form" ).dialog({
     dialogClass: "no-close",
     autoOpen: false,
-    height: 700,
+    height: 825,
     width: 800,
     modal: true,
     buttons: {
