@@ -29,11 +29,19 @@ describe PlatesController do
   end
 
   describe "GET #new" do
-    it "requests the correct URLs from Instagram API"
-    it "removes URLs that have already been plated"
-    it "renders the :new template" do
-      controller.stub_chain(:current_user, :uid).and_return("1234")
+
+    before(:each) do
+      controller.stub_chain(:current_user, :uid).and_return("13171423")
       get :new
+    end
+
+    it "requests the correct URLs from Instagram API" do
+      assigns(:instagrams).length > 0
+    end
+    it "removes URLs that have already been plated" do
+      assigns(:instagrams).length > assigns(:instagram_urls).length
+    end
+    it "renders the :new template" do
       response.should render_template("new")
     end
   end

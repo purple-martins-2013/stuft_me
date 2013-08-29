@@ -9,8 +9,8 @@ class PlatesController < ApplicationController
 
   def new
     current_user
-    instagrams = Instagram.user_recent_media(current_user.uid) if current_user
-    @instagram_urls = instagrams.map {|instagram| instagram.images.standard_resolution.url}
+    @instagrams = Instagram.user_recent_media(current_user.uid) if current_user
+    @instagram_urls = @instagrams.map {|instagram| instagram.images.standard_resolution.url}
     plate_urls = Plate.all.map {|plate| plate.url}
     @instagram_urls -= plate_urls
   end
