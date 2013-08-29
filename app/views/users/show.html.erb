@@ -4,6 +4,6 @@
 
 <h3>Your Plates</h3>
 <% @plates.each do |plate| %>
-  <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>
+  <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}", :class => 'img-circle' %>
   <p><%= plate.description %></p>
 <% end %>

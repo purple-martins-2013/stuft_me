@@ -39,9 +39,9 @@ describe "views" do
       page.should have_content plate.location
     end
 
-    it "shows plate price" do
-      page.should have_content plate.price
-    end
+    # it "shows plate price" do
+      # it { should have_selector('fieldset') }
+    # end
   end
 
 end

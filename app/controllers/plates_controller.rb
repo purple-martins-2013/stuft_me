@@ -16,6 +16,8 @@ class PlatesController < ApplicationController
   end
 
   def create
-    Plate.create(url: params[:plate_url], description: params[:plate_description], location: params[:plate_location], price: params[:plate_price])
+    @user = current_user
+    Plate.create(url: params[:plate_url], description: params[:plate_description], location: params[:plate_location], price: params[:plate_price], user_id: @user.id)
   end
 end
+

@@ -45,6 +45,8 @@ group :development, :test do
   gem 'rack-livereload'
   gem 'terminal-notifier-guard'
   gem 'faker'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do

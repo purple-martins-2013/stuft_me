@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe PlatesController do
 
-  let(:plate) { FactoryGirl.create(:plate) }
+  let(:plate) { FactoryGirl.create :plate }
 
   describe "GET #index" do
 
@@ -58,6 +58,12 @@ describe PlatesController do
       it "does not save the new plate in the database" do
         post :create, plate_url: plate.url
         Plate.all.length.should eq 1
+      end
+    end
+
+    context "with user id" do
+      it "saves the plate with the user id" do
+        plate.user_id.should eq 1
       end
     end
   end
