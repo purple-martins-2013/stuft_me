@@ -1,28 +1,51 @@
+var plate_url, url;
+
 $(document).ready(function() {
   $('.create_plate').on("click", function(e) {
     e.preventDefault();
+    url = $(this).attr("href");
+    plate_url = $(this).find("img").attr("src");
     $("#dialog-form").dialog("open");
+    $("#selected_plate").attr("src", plate_url);
+  });
+
+  $( "#dialog-form" ).dialog({
+    dialogClass: "no-close",
+    autoOpen: false,
+    height: 700,
+    width: 800,
+    modal: true,
+    buttons: {
+      "Create My Plate!": function() {
+        var plate_description = $("#plate_description").val(),
+        plate_location = $("#plate_location").val(),
+        plate_price = $("#plate_price").val(),
+        mini_url = plate_url.split(".").slice(-2,-1)[0].split("/").slice(-1)[0];
+        var data = {
+          plate_url: plate_url,
+          plate_description: plate_description,
+          plate_location: plate_location,
+          plate_price: plate_price
+        }
+        $.ajax({url: url, 
+          type: 'POST',
+          beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+          data: data, 
+          success: function() {
+            $("#dialog-form").dialog("close");
+            $("#"+mini_url).find("img").addClass("plate-added");
+            $("#"+mini_url).replaceWith($("#"+mini_url).find("img"));
+
+          }
+        });
+      },
+      Cancel: function() {
+        $( this ).dialog( "close" );
+      }
+    }
   });
 });
 
-$( "#dialog-form" ).dialog({
-  autoOpen: false,
-  height: 300,
-  width: 350,
-  modal: true,
-  buttons: {
-    "Save": function() {
-      url = $(this).attr("href");
-      data = {data_url: $(this).find("img").attr("href")}
-      $.post(url, data, success)
-    },
-    Cancel: function() {
-      $( this ).dialog( "close" );
-    }
-  },
-  close: function() {
-  }
-});
 
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.

@@ -9,10 +9,13 @@ class PlatesController < ApplicationController
 
   def new
     current_user
-    @instagram = Instagram.user_recent_media(current_user.uid) if current_user
+    instagrams = Instagram.user_recent_media(current_user.uid) if current_user
+    @instagram_urls = instagrams.map {|instagram| instagram.images.standard_resolution.url}
+    plate_urls = Plate.all.map {|plate| plate.url}
+    @instagram_urls -= plate_urls
   end
 
   def create
-    Plate.create(url: params[:url], description: params[:description], location: params[:location], price: params[:price])
+    Plate.create(url: params[:plate_url], description: params[:plate_description], location: params[:plate_location], price: params[:plate_price])
   end
 end

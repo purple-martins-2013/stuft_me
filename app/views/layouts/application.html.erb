@@ -12,6 +12,7 @@
 <body>
   <nav>
     <ul>
+      <li><%= link_to "StuftMe", plates_path %></li>
       <% if current_user %>
         <li><%= link_to "Sign Out", signout_path %></li>
         <li><%= link_to "Create Plate", new_plate_path %></li>

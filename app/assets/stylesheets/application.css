@@ -11,3 +11,11 @@
  *= require_self
  *= require_tree .
  */
+
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+
+.plate-added {
+  opacity: 0.5;
+}
