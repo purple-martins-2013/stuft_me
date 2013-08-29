@@ -1,3 +1,29 @@
+$(document).ready(function() {
+  $('.create_plate').on("click", function(e) {
+    e.preventDefault();
+    $("#dialog-form").dialog("open");
+  });
+});
+
+$( "#dialog-form" ).dialog({
+  autoOpen: false,
+  height: 300,
+  width: 350,
+  modal: true,
+  buttons: {
+    "Save": function() {
+      url = $(this).attr("href");
+      data = {data_url: $(this).find("img").attr("href")}
+      $.post(url, data, success)
+    },
+    Cancel: function() {
+      $( this ).dialog( "close" );
+    }
+  },
+  close: function() {
+  }
+});
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //

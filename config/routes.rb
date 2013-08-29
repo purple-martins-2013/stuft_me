@@ -1,6 +1,6 @@
 StuftMe::Application.routes.draw do
 
-  resources :users, only: [:index, :show, :create, :destroy]
+  resources :users, only: [:index, :show, :new, :create, :destroy]
 
   resources :plates
 

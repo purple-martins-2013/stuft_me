@@ -1,16 +1,8 @@
 <h1>STUFT</h1>
 
-
-  <% if current_user %>
+<% if current_user %>
   Welcome <%= current_user.username %>! <br>
-  <%= link_to "Sign Out", signout_path %> <br>
-
-
-<% else %>
-  <%= link_to "Sign in with Instagram", "/auth/instagram" %> <br>
-
 <% end %>
-
 
 <% @all_plates.each do |plate| %>
   <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>

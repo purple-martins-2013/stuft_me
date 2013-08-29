@@ -2,11 +2,24 @@
 <html>
 <head>
   <title>StuftMe</title>
+  <%= stylesheet_link_tag "jquery-ui.css", media: "all", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "jquery-ui.js", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav>
+    <ul>
+      <% if current_user %>
+        <li><%= link_to "Sign Out", signout_path %></li>
+        <li><%= link_to "Create Plate", new_plate_path %></li>
+      <% else %>
+        <li><%= link_to "Sign In with Instagram", "/auth/instagram" %> </li>
+      <% end %>
+    </ul> 
+  </nav>
 
 <%= yield %>
 
