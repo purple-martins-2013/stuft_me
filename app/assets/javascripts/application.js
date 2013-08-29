@@ -32,6 +32,9 @@ $(document).ready(function() {
           beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
           data: data, 
           success: function() {
+            $("#plate_description").val("");
+            $("#plate_location").val("");
+            $("#plate_price").val("");
             $("#dialog-form").dialog("close");
             $("#"+mini_url).find("img").addClass("plate-added");
             $("#"+mini_url).replaceWith($("#"+mini_url).find("img"));

@@ -3,7 +3,7 @@
     <h2>No new photos found -- go out and take some pictures of your favorite food!</h2>
   <% else %>
     <% @instagram_urls.each do |instagram_url| %>
-      <%= link_to image_tag(instagram_url, height: "250"), plates_path, method: :post, id: "#{instagram_url.split(".")[-2].split("/").last}", class: "create_plate" %>
+      <%= link_to image_tag(instagram_url, height: "375"), plates_path, method: :post, id: "#{instagram_url.split(".")[-2].split("/").last}", class: "create_plate" %>
     <% end %>
   <% end %>
 
