@@ -47,6 +47,9 @@ describe PlatesController do
   end
 
   describe "POST #create" do
+    include LoginHelper
+    let(:user) { FactoryGirl.create(:user)}
+    before { login_as(user) }
     context "with unique url" do
       it "saves the new plate in the database" do
         post :create, plate_url: plate.url+"z"
