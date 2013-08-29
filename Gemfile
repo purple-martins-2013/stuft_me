@@ -44,6 +44,7 @@ group :development, :test do
   gem 'guard-livereload'
   gem 'rack-livereload'
   gem 'terminal-notifier-guard'
+  gem 'faker'
 end
 
 group :test do
