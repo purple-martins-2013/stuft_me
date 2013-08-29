@@ -19,7 +19,7 @@ $(document).ready(function() {
       "Create My Plate!": function() {
         var plate_description = $("#plate_description").val(),
         plate_location = $("#plate_location").val(),
-        plate_price = $("#plate_price").val(),
+        plate_price = document.querySelector('input[name="plate_price"]:checked').value,
         mini_url = plate_url.split(".").slice(-2,-1)[0].split("/").slice(-1)[0];
         var data = {
           plate_url: plate_url,
@@ -34,7 +34,9 @@ $(document).ready(function() {
           success: function() {
             $("#plate_description").val("");
             $("#plate_location").val("");
-            $("#plate_price").val("");
+            if (document.querySelector('input[name="plate_price"]:checked')) {
+              document.querySelector('input[name="plate_price"]:checked').checked = false;
+            }
             $("#dialog-form").dialog("close");
             $("#"+mini_url).find("img").addClass("plate-added");
             $("#"+mini_url).replaceWith($("#"+mini_url).find("img"));
@@ -43,6 +45,11 @@ $(document).ready(function() {
         });
       },
       Cancel: function() {
+        $("#plate_description").val("");
+        $("#plate_location").val("");
+        if (document.querySelector('input[name="plate_price"]:checked')) {
+          document.querySelector('input[name="plate_price"]:checked').checked = false;
+        }
         $( this ).dialog( "close" );
       }
     }

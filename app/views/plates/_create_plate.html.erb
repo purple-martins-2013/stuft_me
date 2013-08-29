@@ -6,8 +6,14 @@
     <input type="text" name="plate_description" id="plate_description" class="text ui-widget-content ui-corner-all" /><br>
     <label for="plate_location">Where'd you get stuft?</label>
     <input type="text" name="plate_location" id="plate_location" value="" class="text ui-widget-content ui-corner-all" /><br>
-    <label for="plate_price">How much did it cost?</label>
-    <input type="text" name="plate_price" id="plate_price" value="" class="text ui-widget-content ui-corner-all" />
+    <fieldset class="rating">
+    <legend>How much did it cost?</legend>
+    <input type="radio" id="star5" name="plate_price" value="5" /><label for="star5" title="Super Expensive"></label>
+    <input type="radio" id="star4" name="plate_price" value="4" /><label for="star4" title="High-End"></label>
+    <input type="radio" id="star3" name="plate_price" value="3" /><label for="star3" title="Reasonably Priced"></label>
+    <input type="radio" id="star2" name="plate_price" value="2" /><label for="star2" title="Good Deal"></label>
+    <input type="radio" id="star1" name="plate_price" value="1" /><label for="star1" title="Super Cheap"></label>
+    </fieldset>
   </fieldset>
   </form>
 </div>
