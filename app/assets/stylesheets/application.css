@@ -75,3 +75,8 @@
     top:2px;
     left:2px;
 }
+
+.profile-image img {
+    height: 10em;
+    width: 10em;
+}
