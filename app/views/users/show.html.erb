@@ -1,9 +1,10 @@
 <h1>Welcome to Stuft</h1>
 
 <h2><%= "#{@user.username}'s Profile Page" %></h2>
+<%= link_to image_tag(@user.profile_pic, :type => :instagram_name, :width => 120, :height => 120, :crop => :fill), @user.instagram_url %>
 
 <h3>Your Plates</h3>
 <% @plates.each do |plate| %>
-  <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>
+  <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}", :class => 'profile-image' %>
   <p><%= plate.description %></p>
 <% end %>

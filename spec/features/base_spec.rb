@@ -4,7 +4,7 @@ describe "views" do
   let(:user) { User.create(username: "FirstUser") }
   before(:each) do
     2.times do |index|
-      Plate.create(user: user, url: "http://gallery.photo.net/photo/175115#{sprintf '%02d', index}-md.jpg", description: "Once in a lifetime #{index}", location: "Walla Walla #{index}", price: "Bora Bora #{index}")
+      Plate.create(user: user, url: "http://gallery.photo.net/photo/175115#{sprintf '%02d', index}-md.jpg", description: "Once in a lifetime #{index}", location: "Walla Walla #{index}", price: "3")
     end
   end
 
@@ -40,7 +40,7 @@ describe "views" do
     end
 
     it "shows plate price" do
-      page.should have_content plate.price
+      expect(page).to have_selector('#star3.active_star')
     end
   end
 
