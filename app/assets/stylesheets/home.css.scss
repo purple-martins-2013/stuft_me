@@ -20,7 +20,7 @@ body {
   background-color: #F9F9F9;
   border: 1px solid #CCCCCC;
   padding: 12px;
-  margin: 15px;
+  margin: 20px 15px;
   width: 30%;
   text-align: center;
   font: 20px/1.4em Arial, sans-serif;
@@ -32,24 +32,19 @@ body {
   vertical-align:middle; 
   margin-bottom: 3px; 
   width: 100%;
+  position: relative;
 }
 
-.photo-right { margin: 0.5em 0pt 0.5em 0.8em; float:right; }
+.vote-text {
+  font-size: 40px;
+  text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
+  position: absolute;
+  margin-top: -15%;
+  margin-left: -1.6%;
+  text-align: center;
+  width: 30%;
+}
 
-.photo-left { margin: 0.5em 0.8em 0.5em 0; float:left; }
-
-// .index-photo {
-//   padding: 25px 30px 5px 30px;
-//   width: 35%;
-//   float: left;
-// }
-
-// .description {
-//   font-size: 18px;
-//   padding-bottom: 15px;
-//   float: left;
-//   clear: left;
-//   display: inline;
-//   text-align: center;
-//   width: 35%;
-// }
+.show-votes {
+  opacity: 0.65;
+}

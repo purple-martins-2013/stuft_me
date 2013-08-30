@@ -9,6 +9,16 @@ $(document).ready(function() {
     $("#selected_plate").attr("src", plate_url);
   });
 
+  $('.index-photo').hover( 
+    function() {
+      $(this).addClass("show-votes");
+      $(this).append("<h2 class='vote-text'>35 Votes</h2>");
+    },
+    function() {
+      $(this).removeClass("show-votes");
+      $(this).find(".vote-text").remove();
+    });
+
   $( "#dialog-form" ).dialog({
     dialogClass: "no-close",
     autoOpen: false,
