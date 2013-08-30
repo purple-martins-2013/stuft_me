@@ -1,10 +1,10 @@
-<h1>STUFT</h1>
-
 <% if current_user %>
-  Welcome <%= current_user.username %>! <br>
+  <h2 class="col-lg-6">Welcome, <%= current_user.username %>!</h2>
 <% end %>
 
 <% @all_plates.each do |plate| %>
-  <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>
-  <p><%= plate.description %></p>
+  <div class="photo">
+    <%= link_to image_tag(plate.url, class: "index-photo"), plate_path(plate), id: "#{plate.id}" %>
+    <%= plate.description %>
+  </div>
 <% end %>
