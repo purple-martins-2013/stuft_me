@@ -20,7 +20,11 @@ class User < ActiveRecord::Base
   end
 
   def instagram_url
-    '//instagram.com/' + Instagram.user_recent_media(self.uid).last.caption.from.username
+    Instagram.user_recent_media(self.uid).each do |instagram|
+      @instagram_url = instagram.caption.from.username if instagram.caption
+    end
+    @instagram_url = '//instagram.com/' + @instagram_url if @instagram_url
+    @instagram_url ||= "//instagram.com/"
   end
 
 end
