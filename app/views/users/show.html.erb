@@ -5,6 +5,8 @@
 
 <h3>Your Plates</h3>
 <% @user.plates.each do |plate| %>
-  <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}", :class => 'profile-image' %>
-  <p><%= plate.description %></p>
+  <div class="photo">
+    <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>
+    <%= plate.description %>
+  </div>
 <% end %>
