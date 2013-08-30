@@ -11,4 +11,13 @@ class User < ActiveRecord::Base
       user.username = auth["info"]["name"]
     end
   end
+
+  def profile_pic
+    Instagram.user_recent_media(self.uid).last.caption.from.profile_picture
+  end
+
+  def instagram_url
+    '//instagram.com/' + Instagram.user_recent_media(self.uid).last.caption.from.username
+  end
+
 end
