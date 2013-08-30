@@ -16,7 +16,7 @@ body {
   font-size: 19px;
 }
 
-.photo, .large-photo, .tiny-photo { 
+.photo, .large-photo, .tiny-photo, .small-photo { 
   background-color: #F9F9F9;
   border: 1px solid #CCCCCC;
   text-align: center;
@@ -29,16 +29,16 @@ body {
   font: 20px/1.4em Arial, sans-serif;
 }
 
-.photo, .tiny-photo {
+.photo, .tiny-photo, .small-photo {
   width: 29.5%
 }
 
-.tiny-photo {
+.tiny-photo, .small-photo {
   padding: 3px;
   margin: 3px;
 }
 
-.photo img { 
+.photo img, .small-photo img { 
   border: 1px solid #CCCCCC;
   vertical-align:middle; 
   margin-bottom: 3px; 

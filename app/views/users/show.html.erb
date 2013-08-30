@@ -2,11 +2,16 @@
 
 <h2 class="text-center"><%= "#{@user.username.capitalize}" %></h2>
 <%= link_to image_tag(@user.profile_pic, :type => :instagram_name, :size => "200x200"), @user.instagram_url, :id => "profile-pic" %>
-<br>
-<h3 class="col-lg-6">Your Plates</h3>
-<% @user.plates.each do |plate| %>
-  <div class="photo">
-    <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>
-    <%= plate.description %>
-  </div>
-<% end %>
+<br><br>
+<div class="col-sm-6">
+  <h2>Your Plates</h2>
+  <% @user.plates.each do |plate| %>
+    <div class="small-photo">
+      <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>
+      <%= plate.description %>
+    </div>
+  <% end %>
+</div>
+<div class="col-sm-6">
+  <h2>Your Favorites</h2>
+</div>
