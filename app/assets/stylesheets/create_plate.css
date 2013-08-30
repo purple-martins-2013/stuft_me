@@ -84,6 +84,13 @@
     margin-right: auto;
 }
 
+#profile-pic {
+    display: inline-block;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .build-plate label, .rating p, .pricing p {
     padding: 15px 15px;
     margin: 0 8px;
