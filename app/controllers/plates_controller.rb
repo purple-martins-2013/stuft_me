@@ -10,7 +10,7 @@ class PlatesController < ApplicationController
   end
 
   def new
-    @instagram_urls = InstagramService.unique_instagram_urls_for(current_user)
+    @instagram_urls = unique_instagram_urls_for(current_user)
   end
 
   def create
