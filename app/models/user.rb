@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   has_many :plates
 
-  validates_presence_of :username, :uid, :provider
+  # validates_presence_of :username, :uid, :provider
 
   def self.create_with_omniauth(auth)
     create! do |user|
