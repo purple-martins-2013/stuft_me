@@ -29,8 +29,13 @@ $(document).ready(function() {
       "Create My Plate!": function() {
         var plate_description = $("#plate_description").val(),
         plate_location = $("#plate_location").val(),
-        plate_price = document.querySelector('input[name="plate_price"]:checked').value,
+        plate_price,
         mini_url = plate_url.split(".").slice(-2,-1)[0].split("/").slice(-1)[0];
+        if (document.querySelector('input[name="plate_price"]:checked')) {
+          plate_price = document.querySelector('input[name="plate_price"]:checked').value;
+        } else {
+          plate_price = "0";
+        }
         var data = {
           plate_url: plate_url,
           plate_description: plate_description,
