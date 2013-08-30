@@ -13,7 +13,10 @@ class User < ActiveRecord::Base
   end
 
   def profile_pic
-    Instagram.user_recent_media(self.uid).last.caption.from.profile_picture
+    Instagram.user_recent_media(self.uid).each do |instagram|
+      @profile_pic = instagram.caption.from.profile_picture if instagram.caption
+    end
+    @profile_pic ||= "/images/placeholder.jpg"
   end
 
   def instagram_url
