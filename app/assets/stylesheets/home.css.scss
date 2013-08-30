@@ -16,18 +16,26 @@ body {
   font-size: 19px;
 }
 
-.photo, .large-photo { 
+.photo, .large-photo, .tiny-photo { 
   background-color: #F9F9F9;
   border: 1px solid #CCCCCC;
-  padding: 12px;
-  margin: 20px 15px;
   text-align: center;
-  font: 20px/1.4em Arial, sans-serif;
   display: inline-block;
 }
 
-.photo {
-  width: 30%
+.photo, .large-photo {
+  padding: 12px;
+  margin: 20px 15px;
+  font: 20px/1.4em Arial, sans-serif;
+}
+
+.photo, .tiny-photo {
+  width: 29%
+}
+
+.tiny-photo {
+  padding: 3px;
+  margin: 3px;
 }
 
 .photo img { 
