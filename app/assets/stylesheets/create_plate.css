@@ -6,31 +6,46 @@
   opacity: 0.3;
 }
 
-.rating, .pricing {
+.rating {
     padding-top: 15px;
     float:left;
+}
+
+.pricing {
+    padding-top: 15px;
+    display: block;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
    follow these rules. Every browser that supports :checked also supports :not(), so
    it doesn’t make the test unnecessarily selective */
 .rating:not(:checked) > input, .pricing:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-    clip:rect(0,0,0,0);
+    position: absolute;
+    top: -9999px;
+    clip: rect(0,0,0,0);
 }
 
 .rating:not(:checked) > label, .pricing:not(:checked) > label{
-    float:right;
-    width:1em;
-    padding:0 .1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:200%;
-    line-height:1.2;
-    color:#ddd;
-    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+    float: right;
+    width: 1em;
+    padding: 0 .1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    line-height: 1.2;
+    color: #ddd;
+    text-shadow: 1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label {
+    font-size: 200%;
+}
+
+.pricing:not(:checked) > label {
+    font-size: 280%;
 }
 
 .rating:not(:checked) > label:before, .pricing:not(:checked) > label:before {
@@ -39,13 +54,13 @@
 
 .rating > input:checked ~ label, .pricing > input:checked ~ label {
     color: green;
-    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+    text-shadow: 1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
 }
 
 .rating:not(:checked) > label:hover,
 .rating:not(:checked) > label:hover ~ label {
     color: gold;
-    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+    text-shadow: 1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
 }
 
 .rating > input:checked + label:hover,
@@ -54,13 +69,13 @@
 .rating > input:checked ~ label:hover ~ label,
 .rating > label:hover ~ input:checked ~ label {
     color: goldenrod;
-    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+    text-shadow: 1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
 }
 
 .rating > label:active, .pricing > label:active {
-    position:relative;
-    top:2px;
-    left:2px;
+    position: relative;
+    top: 2px;
+    left: 2px;
 }
 
 #selected_plate {
@@ -83,4 +98,9 @@
 .rating p {
     float: left;
     margin-top: -15px;
+}
+
+#price-display {
+    display: inline-block;
+    padding-right: 10px;
 }

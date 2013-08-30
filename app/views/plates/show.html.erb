@@ -1,7 +1,9 @@
-<%= image_tag @plate.url %>
+<%= image_tag @plate.url, id: "selected_plate", class: "large-photo" %>
 
-<h2><%= @plate.description %></h2>
-<h3>Location: <%= @plate.location %></h3>
-<h3>Price:</h3>
+<div class="text-center">
+  <h1><%= @plate.description %></h1>
+  <h2>Location: <%= @plate.location %></h2>
+  <h2 id="price-display">Price:</h2>
+</div>
 
 <%= render 'show_plate_pricing' %>
