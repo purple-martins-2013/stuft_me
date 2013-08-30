@@ -5,7 +5,11 @@ class Plate < ActiveRecord::Base
   validates_presence_of :url
   validates_uniqueness_of :url
 
-  before_save 'description ||= "Unnamed"',
-              'description.capitalize!'
+  before_create :fill_description
+
+  def fill_description
+    self.description = "Unnamed" if description == ""
+    self.description.capitalize!
+  end
 
 end
