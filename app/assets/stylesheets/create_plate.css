@@ -7,6 +7,7 @@
 }
 
 .rating, .pricing {
+    padding-top: 15px;
     float:left;
 }
 
@@ -60,4 +61,26 @@
     position:relative;
     top:2px;
     left:2px;
+}
+
+#selected_plate {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.build-plate label, .rating p, .pricing p {
+    padding: 15px 15px;
+    margin: 0 8px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.rating legend {
+    display: none;
+}
+
+.rating p {
+    float: left;
+    margin-top: -15px;
 }

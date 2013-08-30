@@ -1,13 +1,14 @@
 <div id="dialog-form" title="Make a New Plate!">
   <%= image_tag("/", height: "500", id: "selected_plate") %>
   <form>
-  <fieldset>
+  <fieldset class="build-plate">
     <label for="plate_description">What is this?</label>
     <input type="text" name="plate_description" id="plate_description" class="text ui-widget-content ui-corner-all" /><br>
     <label for="plate_location">Where'd you get stuft?</label>
     <input type="text" name="plate_location" id="plate_location" value="" class="text ui-widget-content ui-corner-all" /><br>
     <fieldset class="rating">
-    <legend>How much did it cost?</legend>
+    <legend></legend>
+    <p>How much did it cost?</p>
     <input type="radio" id="star5" name="plate_price" value="5" /><label for="star5" title="Super Expensive"></label>
     <input type="radio" id="star4" name="plate_price" value="4" /><label for="star4" title="High-End"></label>
     <input type="radio" id="star3" name="plate_price" value="3" /><label for="star3" title="Reasonably Priced"></label>
