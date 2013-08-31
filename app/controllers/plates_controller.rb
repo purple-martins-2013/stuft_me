@@ -32,7 +32,6 @@ class PlatesController < ApplicationController
     @plate = Plate.find(params[:id])
     current_user.undrool(@plate)
     redirect_to plate_path(@plate)
-
   end
 end
 

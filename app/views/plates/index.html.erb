@@ -4,9 +4,8 @@
   <% end %>
 
   <% @all_plates.each do |plate| %>
-  <div class="photo">
+  <div class="wall-photo">
     <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}", class: "index-photo" %>
-    <%= plate.description %>
   </div>
   <% end %>
 </div>
