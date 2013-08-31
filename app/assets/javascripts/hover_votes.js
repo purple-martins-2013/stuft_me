@@ -1,3 +1,7 @@
+$(document).on("page:load", function() {
+  new HoverVoteable('#plates-index')
+});
+
 $(document).ready(function() {
   new HoverVoteable('#plates-index')
 });
