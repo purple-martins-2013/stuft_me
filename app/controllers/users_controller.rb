@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
   def show
-    @user = current_user
-    @plates = Plate.where(user_id: @user.id)
+    @user = User.find(params[:id])
   end
 
   def index
-    
+    @users = User.all
   end
 
 end

@@ -44,6 +44,12 @@ group :development, :test do
   gem 'guard-livereload'
   gem 'rack-livereload'
   gem 'terminal-notifier-guard'
+  gem 'faker'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'debugger'
+  gem "jasminerice", :git => 'https://github.com/bradphelan/jasminerice.git'
+  gem 'shoulda-matchers'
 end
 
 group :test do
@@ -52,6 +58,7 @@ group :test do
   gem "database_cleaner"
   gem "spork", "> 0.9.0.rc"
   gem "guard-spork"
+  gem 'simplecov', :require => false
 end
 
 # Use ActiveModel has_secure_password

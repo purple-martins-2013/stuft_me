@@ -1,12 +1,11 @@
-<h1>STUFT</h1>
+<div id="plates-index">
+  <% if current_user %>
+  <h2 class="text-center">Welcome, <%= current_user.username %>!</h2>
+  <% end %>
 
-<% if current_user %>
-  Welcome <%= current_user.username %>! <br>
-<% end %>
-
-<% @all_plates.each do |plate| %>
-  <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>
-  <p><%= plate.description %></p>
-<% end %>
-
-<!-- link_to image_tag("Search.png", :border => 0), {:action => 'search', :controller => 'pages'}, :class => 'dock-item' -->
+  <% @all_plates.each do |plate| %>
+  <div class="wall-photo">
+    <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}", class: "index-photo" %>
+  </div>
+  <% end %>
+</div>

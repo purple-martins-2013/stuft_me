@@ -1,4 +1,6 @@
 class PlatesController < ApplicationController
+  before_filter :check_logged_in!, only: [:create, :new]
+
   def index
     @all_plates = Plate.all
   end
@@ -8,14 +10,28 @@ class PlatesController < ApplicationController
   end
 
   def new
-    current_user
-    instagrams = Instagram.user_recent_media(current_user.uid) if current_user
-    @instagram_urls = instagrams.map {|instagram| instagram.images.standard_resolution.url}
-    plate_urls = Plate.all.map {|plate| plate.url}
-    @instagram_urls -= plate_urls
+    @instagram_urls = unique_instagram_urls_for(current_user)
   end
 
   def create
-    Plate.create(url: params[:plate_url], description: params[:plate_description], location: params[:plate_location], price: params[:plate_price])
+    @user = current_user
+    current_user.plates.create(url: params[:plate_url], description: params[:plate_description], location: params[:plate_location], price: params[:plate_price])
+  end
+
+  def drool
+    @plate = Plate.find(params[:id])
+
+    @plate.drool_count += 1
+
+    Drool.create(user_id: current_user.id, plate_id: @plate.id, drool_status: true)
+    #current_user.drool!(@plate)
+    redirect_to plate_path(@plate)
+  end
+
+  def undrool
+    @plate = Plate.find(params[:id])
+    current_user.undrool(@plate)
+    redirect_to plate_path(@plate)
   end
 end
+

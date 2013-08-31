@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130829011023) do
+ActiveRecord::Schema.define(version: 20130831232617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "drools", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "drool_status"
+    t.integer  "plate_id"
+  end
 
   create_table "plates", force: true do |t|
     t.integer  "user_id"
@@ -24,6 +32,7 @@ ActiveRecord::Schema.define(version: 20130829011023) do
     t.string   "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "drool_count", default: 0
   end
 
   create_table "users", force: true do |t|
@@ -32,6 +41,8 @@ ActiveRecord::Schema.define(version: 20130829011023) do
     t.datetime "updated_at"
     t.string   "provider"
     t.integer  "uid"
+    t.string   "profile_url"
+    t.string   "profile_pic"
   end
 
 end

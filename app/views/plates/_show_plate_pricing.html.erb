@@ -1,0 +1,11 @@
+<fieldset class="pricing">
+
+<% 5.downto(1) do |price| %>
+  <% title = ["Super Expensive", "High-End", "Reasonably Priced", "Good Deal", "Super Cheap"][5 - price] %>
+  <% if @plate.price.to_i == price %>
+    <input type="radio" id="star<%= price %>" name="plate_price" class="active_star" value="<%= price %>" checked="checked" disabled /><label for="star<%= price %>" title="<%= title %>"></label>
+  <% else %>
+    <input type="radio" id="star<%= price %>" name="plate_price" value="<%= price %>" disabled /><label for="star<%= price %>" title="<%= title %>"></label>
+  <% end %>
+<% end %>
+</fieldset>
