@@ -17,5 +17,21 @@ class PlatesController < ApplicationController
     @user = current_user
     current_user.plates.create(url: params[:plate_url], description: params[:plate_description], location: params[:plate_location], price: params[:plate_price])
   end
+
+  def drool
+    @plate = Plate.find(params[:id])
+
+    @plate.drool_count += 1
+
+    Drool.create(user_id: current_user.id, plate_id: @plate.id, drool_status: true)
+    #current_user.drool!(@plate)
+    redirect_to plate_path(@plate)
+  end
+
+  def undrool
+    @plate = Plate.find(params[:id])
+    current_user.undrool(@plate)
+    redirect_to plate_path(@plate)
+  end
 end
 

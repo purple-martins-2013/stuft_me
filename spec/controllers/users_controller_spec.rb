@@ -5,10 +5,6 @@ describe UsersController do
   let(:valid_user) { FactoryGirl.create(:user) }
   let(:invalid_user) { FactoryGirl.build(:user) }
 
-  user2 = FactoryGirl.build(:user)
-  puts "*"*50
-  p user2
-
   describe "GET #show" do
     context "When User is invalid" do
       it "should raise error" do
