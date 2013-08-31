@@ -6,4 +6,6 @@
   <h2 id="price-display">Price:</h2>
 </div>
 
+<%= button_to("drool", plates_drool_path(:id => params[:id]), :method => :post) %>
+
 <%= render 'show_plate_pricing' %>

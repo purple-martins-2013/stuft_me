@@ -8,7 +8,7 @@ describe SessionsController do
   let(:omniauth_credentials) { {"provider" => "instagram", "uid" => uid_code, "info" => { "name" => "test-user"}} }
   
 
-  describe 'POST #create' do
+  describe 'GET #create' do
     context 'When ommiauth.auth is invalid' do
       let(:omniauth_credentials) { {"provider" => nil, "uid" => nil, "info" => { "name" => nil}} } 
       it "should raise an error " do      
@@ -18,20 +18,20 @@ describe SessionsController do
 
     context 'When #create is successful' do
       it "user is created in database" do
-        post :create , :provider => "instagram"
+        get :create , :provider => "instagram"
         User.find_by_uid(uid_code).should_not be_nil
       end
 
       it "user id is stored in session" do
-        post :create , :provider => "instagram"
+        get :create , :provider => "instagram"
         session[:user_id].should_not be_nil
       end
     end
   end
 
-  describe 'DELETE #destroy' do
+  describe 'GET #destroy' do
     it "should set session[:user_id] to nil" do
-      post :create , :provider => "instagram"
+      get :create , :provider => "instagram"
       session[:user_id].should_not be_nil 
       delete :destroy
       session[:user_id].should be_nil 

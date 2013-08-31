@@ -6,9 +6,11 @@ StuftMe::Application.routes.draw do
 
   root to: "plates#index"
 
-  post "/auth/:provider/callback" => "sessions#create"
-  delete "/signout" => "sessions#destroy", :as => :signout
+  get "/auth/:provider/callback" => "sessions#create"
+  get "/signout" => "sessions#destroy", :as => :signout
 
+  post 'plates/drool' => 'plates#drool'
+  put 'plates/undrool' => 'plates#undrool'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
