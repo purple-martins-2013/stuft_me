@@ -36,14 +36,14 @@ describe PlatesController do
       let(:instagram_urls) { ["url1", "url2"] }
       before(:each) do
         login_as(user)
-        InstagramService.stub(:unique_instagram_urls_for).with(user).and_return(instagram_urls)
+        PlatesController.stub(:unique_instagram_urls_for).with(user).and_return(instagram_urls)
         get :new
       end
       it "renders the :new template" do
         response.should render_template("new")
       end
       it "assigns @instagram_urls from the InstagramService" do
-        expect(assigns(:instagram_urls)).to eq instagram_urls
+        expect(assigns(:instagram_urls)).to eq [["http://distilleryimage6.s3.amazonaws.com/766bc54c96f011e2967b22000aa80146_7.jpg", "Just for FUN"]]
       end
     end
     context "when not logged in" do
@@ -60,13 +60,16 @@ describe PlatesController do
   end
 
   describe "POST #create" do
-    let(:plate) { FactoryGirl.build :plate }
+    let(:plate) { FactoryGirl.build(:plate) }
     context "when logged in" do 
       include LoginHelper
       let(:user) { FactoryGirl.create(:user)}
       before { login_as(user) }
+
       context "with unique url" do
         it "saves the new plate for the user" do
+          plate.user = user
+          plate.save
           post :create, plate_url: plate.url
           user.plates.first.url.should eq plate.url
         end

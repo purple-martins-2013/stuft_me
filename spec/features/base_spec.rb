@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "views" do
-  let(:user) { User.create(username: "FirstUser") }
+  let(:user) { FactoryGirl.create(:user) }
   before(:each) do
     2.times do |index|
       Plate.create(user: user, url: "http://gallery.photo.net/photo/175115#{sprintf '%02d', index}-md.jpg", description: "Once in a lifetime #{index}", location: "Walla Walla #{index}", price: "3")
@@ -12,12 +12,6 @@ describe "views" do
   let(:plate) { Plate.last }
 
   describe "plates/index" do
-    it "renders every plate in the database" do
-      visit root_path  
-      all_plates.each do |plate|
-        page.should have_content plate.description
-      end
-    end
 
     it "should allow users to click on plates for more information" do
       visit root_path
