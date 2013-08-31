@@ -1,9 +1,25 @@
-<%= image_tag @plate.url, id: "selected_plate", class: "large-photo" %>
-
-<div class="text-center">
-  <h1><%= @plate.description %></h1>
-  <h2>Location: <%= @plate.location %></h2>
-  <h2 id="price-display">Price:</h2>
+<div class="col-md-8 centered">
+  <%= image_tag @plate.url, id: "selected_plate", class: "large-photo" %>
+  <div class="text-center">
+    <h1><%= @plate.description %></h1>
+    <h2><i>Find me at: <%= @plate.location %></i></h2>
+    <%= render 'show_plate_pricing' %>
+  </div>
 </div>
 
-<%= render 'show_plate_pricing' %>
+<div class="col-md-4 centered shift-down">
+  <div class="text-center">
+    <h2>Uploaded by: </h2>
+    <div class="show-profile-photo">
+      <%= link_to image_tag(@plate.user.profile_pic, :type => :instagram_name, :crop => :fill, :class => "show-profile-photo"), @plate.user %>
+      <h3><%= "#{@plate.user.username.capitalize}" %></h3>
+      <% @plate.user.plates.each_with_index do |plate, index| %>
+        <% if index < 3 %>
+          <div class="tiny-photo">
+            <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

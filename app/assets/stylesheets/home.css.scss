@@ -8,6 +8,10 @@ body {
   height: 100%;
 }
 
+.centered {
+  margin: 0 auto;
+}
+
 .navbar-brand {
   font-size: 30px;
 }
@@ -16,7 +20,7 @@ body {
   font-size: 19px;
 }
 
-.photo, .large-photo, .tiny-photo, .small-photo { 
+.photo, .large-photo, .tiny-photo, .small-photo, .wall-photo, .show-profile-photo { 
   background-color: #F9F9F9;
   border: 1px solid #CCCCCC;
   text-align: center;
@@ -30,20 +34,48 @@ body {
 }
 
 .photo, .tiny-photo, .small-photo {
-  width: 29.5%
+  width: 29.5%;
 }
 
-.tiny-photo, .small-photo {
+.large-photo {
+  width: 90%;
+}
+
+.show-profile-photo {
+  width: 70%;
+}
+
+.shift-down {
+  margin-top: 50px;
+}
+
+.wall-photo {
+  width: 32.7%;
+}
+
+.tiny-photo, .small-photo, .show-profile-photo {
   padding: 3px;
   margin: 3px;
 }
 
-.photo img, .small-photo img { 
+.wall-photo {
+  padding: 1px;
+  margin-bottom: 2px;
+}
+
+.wall-photo img {
+  margin-bottom: 1px;
+}
+
+.photo img, .small-photo img, .wall-photo img, .show-profile-photo img { 
   border: 1px solid #CCCCCC;
   vertical-align:middle; 
-  margin-bottom: 3px; 
   width: 100%;
   position: relative;
+}
+
+.photo img, .small-photo img {
+  margin-bottom: 3px;
 }
 
 #profile-pic {
