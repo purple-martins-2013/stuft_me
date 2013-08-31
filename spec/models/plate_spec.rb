@@ -1,8 +1,25 @@
 require "spec_helper"
 
 describe Plate do
-  it "requires a url" do
-    expect { Plate.create! }.to raise_error
+
+  let(:plate) { FactoryGirl.build(:plate) }
+  let(:invalid_plate) { FactoryGirl.build(:invalid_plate)}
+
+  it "is valid if url is include" do
+    plate.should be_valid
   end
+
+  it "requires a url" do
+    invalid_plate.should_not be_valid
+  end
+
+  it "validates the uniqueness of a url" do
+    plate_two = plate.dup
+    plate.save
+    plate_two.should_not be_valid
+  end
+
+  it { should belong_to(:user) }
+  it { should have_many(:drools) }
 
 end

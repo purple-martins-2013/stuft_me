@@ -49,6 +49,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'debugger'
   gem "jasminerice", :git => 'https://github.com/bradphelan/jasminerice.git'
+  gem 'shoulda-matchers'
 end
 
 group :test do
