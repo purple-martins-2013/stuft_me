@@ -7,7 +7,7 @@ function HoverVoteable(container) {
     function() {
       $(this).addClass("show-votes");
       $(this).append("<h2 class='vote-text'>35 Votes</h2>");
-    }).on("mouseleave", function() {
+    }).on("mouseleave", ".index-photo", function() {
       $(this).removeClass("show-votes");
       $(this).find(".vote-text").remove();
     });
