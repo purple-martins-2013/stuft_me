@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
   has_many :plates
+  has_many :drools
 
   validates_presence_of :username, :uid, :provider
 
