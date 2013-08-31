@@ -1,10 +1,12 @@
-<% if current_user %>
+<div id="plates-index">
+  <% if current_user %>
   <h2 class="text-center">Welcome, <%= current_user.username %>!</h2>
-<% end %>
+  <% end %>
 
-<% @all_plates.each do |plate| %>
+  <% @all_plates.each do |plate| %>
   <div class="photo">
     <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}", class: "index-photo" %>
     <%= plate.description %>
   </div>
-<% end %>
+  <% end %>
+</div>
