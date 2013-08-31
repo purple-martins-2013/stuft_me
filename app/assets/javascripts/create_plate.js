@@ -1,6 +1,13 @@
 var plate_url, url;
 
-$(document).ready(function() {
+$(document).on("page:load", function(){
+  CreatePlate();
+});
+$(document).ready(function(){
+  CreatePlate();
+});
+
+function CreatePlate() {
   $('.create_plate').on("click", function(e) {
     e.preventDefault();
     url = $(this).attr("href");
@@ -59,5 +66,5 @@ $(document).ready(function() {
       }
     }
   });
-});
+};
 
