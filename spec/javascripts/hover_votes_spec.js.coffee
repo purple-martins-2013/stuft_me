@@ -11,7 +11,7 @@ describe "HoverVotes", ->
 
   it "removes class show-votes and removes vote text when the mouse leaves the plate", ->
     photo = $(".index-photo")
-    $('.index-photo').trigger('mouseleave');
+    $('.index-photo').trigger('mouseleave')
     expect(photo).not.toHaveClass("show-votes")
     expect(photo.find("h2").length).toBe 0
     
