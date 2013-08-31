@@ -17,5 +17,9 @@ class PlatesController < ApplicationController
     @user = current_user
     current_user.plates.create(url: params[:plate_url], description: params[:plate_description], location: params[:plate_location], price: params[:plate_price])
   end
+
+  def drool
+    
+  end
 end
 

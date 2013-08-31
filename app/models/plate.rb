@@ -1,6 +1,7 @@
 class Plate < ActiveRecord::Base
 
   belongs_to :user
+  has_many :drools
 
   validates_presence_of :url
   validates_uniqueness_of :url
