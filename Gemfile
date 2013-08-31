@@ -57,6 +57,7 @@ group :test do
   gem "database_cleaner"
   gem "spork", "> 0.9.0.rc"
   gem "guard-spork"
+  gem 'simplecov', :require => false
 end
 
 # Use ActiveModel has_secure_password
