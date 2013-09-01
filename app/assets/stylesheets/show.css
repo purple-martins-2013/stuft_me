@@ -1,0 +1,18 @@
+#tag-form {
+  margin-top: 40px;
+  font-size: 32px;
+}
+
+li.token-input-token-facebook {
+  font-size: 25px;
+}
+
+ul.token-input-list-facebook {
+  font-size: 26px;
+  margin: 0 auto;
+  width: 650px;
+}
+
+div.token-input-dropdown-facebook {
+  font-size: 25px;
+}

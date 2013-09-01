@@ -37,7 +37,6 @@ function CreatePlate() {
           plate_price = "0";
         }
         var tag_tokens = $("#tag_tokens").val();
-        debugger
         var data = {
           plate_url: plate_url,
           plate_description: plate_description,

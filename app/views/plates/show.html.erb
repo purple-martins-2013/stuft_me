@@ -4,6 +4,7 @@
     <h1><%= @plate.description %></h1>
     <h2><i>Find me at: <%= @plate.location %></i></h2>
     <%= render 'show_plate_pricing' %>
+    <%= render 'show_and_add_tags', plate: @plate %>
   </div>
 </div>
 
