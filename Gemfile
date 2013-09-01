@@ -31,9 +31,9 @@ gem 'instagram'
 # gem 'omniauth'
 gem 'omniauth-instagram'
 
-group :assets do
-  gem "chosen-rails"
-end
+gem "chosen-rails"
+gem "compass-rails", github: "milgner/compass-rails", branch: "rails4"
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

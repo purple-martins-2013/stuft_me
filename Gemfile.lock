@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/milgner/compass-rails.git
+  revision: c86e7fd9c2605c80816a2f64a3fb8b7c3a09e494
+  branch: rails4
+  specs:
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
+
+GIT
   remote: https://github.com/bradphelan/jasminerice.git
   revision: 091349c27343bfa728b8e5745675f9ddbb7d9699
   specs:
@@ -67,8 +75,6 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
-    compass-rails (1.0.3)
-      compass (>= 0.12.2, < 0.14)
     database_cleaner (1.1.1)
     debug_inspector (0.0.2)
     debugger (1.6.1)
@@ -265,6 +271,7 @@ DEPENDENCIES
   capybara
   chosen-rails
   coffee-rails (~> 4.0.0)
+  compass-rails!
   database_cleaner
   debugger
   factory_girl_rails

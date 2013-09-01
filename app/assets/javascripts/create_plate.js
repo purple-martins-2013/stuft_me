@@ -2,11 +2,9 @@ var plate_url, url;
 
 $(document).on("page:load", function(){
   CreatePlate();
-  $('#plate_tag_ids').chosen();
 });
 $(document).ready(function(){
   CreatePlate();
-  $('#plate_tag_ids').chosen();
 });
 
 function CreatePlate() {
@@ -16,6 +14,7 @@ function CreatePlate() {
     plate_url = $(this).find("img").attr("src");
     $("#dialog-form").dialog("open");
     $("#selected_plate").attr("src", plate_url);
+    $('#plate_tag_ids').chosen();
   });
 
   $( "#dialog-form" ).dialog({
