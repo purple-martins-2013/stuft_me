@@ -18,6 +18,17 @@ class PlatesController < ApplicationController
     current_user.plates.create(url: params[:plate_url], description: params[:plate_description], location: params[:plate_location], price: params[:plate_price])
   end
 
+  def edit
+    @plate = Plate.find(params[:plate_id])
+  end
+
+  def destroy
+    @user = current_user
+    plate = Plate.find(params[:id])
+    plate.destroy if plate.user == @user
+    render "users/show"
+  end
+
   def drool
     @plate = Plate.find(params[:id])
 

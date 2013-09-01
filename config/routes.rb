@@ -1,8 +1,8 @@
 StuftMe::Application.routes.draw do
 
-  resources :users, only: [:index, :show, :new, :create, :destroy]
-
   resources :plates
+
+  resources :users, only: [:index, :show, :new, :create, :destroy]
 
   root to: "plates#index"
 

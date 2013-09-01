@@ -1,18 +1,20 @@
 <% my_profile = (@user == current_user) %>
-<%= "<h1 class='text-center'>Welcome to Stuft</h1>" if my_profile %>
+<%== "<h1 class='text-center'>Welcome to Stuft</h1>" if my_profile %>
 
 <h1 class="text-center"><%= "#{@user.username.capitalize}" %></h1>
 <%= link_to image_tag(@user.profile_pic, :type => :instagram_name, :size => "200x200"), @user.instagram_url, :id => "profile-pic" %>
 <br><br>
-<div id="my-plates">
-  <div class="col-sm-6">
-    <h2><%= my_profile ? "Your Plates" : "#{@user.username}'s Plates" %></h2>
-    <% @user.plates.each do |plate| %>
-      <%== my_profile ? "<div class='small-photo'>" : "<div class='your-small-photo'>" %>
-        <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>
-        <%= plate.description %>
-      </div>
-    <% end %>
+<div>
+  <div id="my-plates">
+    <div class="col-sm-6">
+      <h2><%= my_profile ? "Your Plates" : "#{@user.username}'s Plates" %></h2>
+      <% @user.plates.each do |plate| %>
+        <%== my_profile ? "<div class='small-photo' data-url='/plates/#{plate.id}'>" : "<div class='your-small-photo'>" %>
+          <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>
+          <%= plate.description %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 <div class="col-sm-6">

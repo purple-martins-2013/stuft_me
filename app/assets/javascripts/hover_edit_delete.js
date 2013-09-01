@@ -13,7 +13,7 @@ function HoverButtons(container) {
       $(this).append("<button type='button' id='edit-btn' class='btn btn-primary'>Edit</button><button type='button' id='delete-btn' class='btn btn-danger'>Delete</button>");
     }).on("mouseleave", ".small-photo", function() {
       $(this).removeClass("show-votes");
-      $(this).find("#edit-btn").remove();
-      $(this).find("#delete-btn").remove();
+      $("#edit-btn").remove();
+      $("#delete-btn").remove();
     });
 }
