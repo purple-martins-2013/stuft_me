@@ -31,6 +31,10 @@ gem 'instagram'
 # gem 'omniauth'
 gem 'omniauth-instagram'
 
+group :assets do
+  gem "chosen-rails"
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

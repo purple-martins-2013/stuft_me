@@ -2,9 +2,11 @@ var plate_url, url;
 
 $(document).on("page:load", function(){
   CreatePlate();
+  $('#plate_tag_ids').chosen();
 });
 $(document).ready(function(){
   CreatePlate();
+  $('#plate_tag_ids').chosen();
 });
 
 function CreatePlate() {
