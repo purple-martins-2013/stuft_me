@@ -54,6 +54,8 @@ function CreatePlate() {
             if (document.querySelector('input[name="plate_price"]:checked')) {
               document.querySelector('input[name="plate_price"]:checked').checked = false;
             }
+            $("li.token-input-token-facebook").remove();
+            $("ul.token-input-list-facebook").remove();
             $("#dialog-form").dialog("close");
             $("#"+mini_url).find("img").addClass("plate-added");
             $("#"+mini_url).replaceWith($("#"+mini_url).find("img"));
@@ -67,6 +69,8 @@ function CreatePlate() {
         if (document.querySelector('input[name="plate_price"]:checked')) {
           document.querySelector('input[name="plate_price"]:checked').checked = false;
         }
+        $("li.token-input-token-facebook").remove();
+        $("ul.token-input-list-facebook").remove();
         $( this ).dialog( "close" );
       }
     }
