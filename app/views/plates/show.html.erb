@@ -8,9 +8,9 @@
 </div>
 
 <% unless drooled?(@plate) %>
-  <%= button_to("drool", plates_drool_path(:id => params[:id]), :method => :post) %>
+  <%= button_to("drool", plates_drool_path(:id => params[:id]), :method => :post, :class => "btn btn-success" ) %>
 <% else %>
-  <%= button_to("undrool", plates_undrool_path(:id => params[:id]), :method => :put) %>
+  <%= button_to("undrool", plates_undrool_path(:id => params[:id]), :method => :put, :class => "btn btn-danger") %>
 <% end %>
 <%= @plate.drool_count %> people drooled over this plate.
 
