@@ -17,8 +17,8 @@
     </fieldset>
 
     <br><br><br>
-    <%= label :tag_ids, "Tags" %>
-    <%= collection_select :plate, :tag_ids, Tag.order(:name), :name, :name, {}, {multiple: true} %>
+    <%= label :tag_tokens, "Tags" %>
+    <%= text_field_tag :tag_tokens %>
   </fieldset>
   </form>
 </div>

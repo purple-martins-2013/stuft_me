@@ -14,6 +14,9 @@ function CreatePlate() {
     plate_url = $(this).find("img").attr("src");
     $("#dialog-form").dialog("open");
     $("#selected_plate").attr("src", plate_url);
+    $('#tag_tokens').tokenInput('/tags.json', {
+      theme: 'facebook'
+    });
   });
 
   $( "#dialog-form" ).dialog({
@@ -33,7 +36,8 @@ function CreatePlate() {
         } else {
           plate_price = "0";
         }
-        var tags = $("#plate_tag_ids").val();
+        var tags = $("#tag_tokens").val().split(",");
+        debugger
         var data = {
           plate_url: plate_url,
           plate_description: plate_description,

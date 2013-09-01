@@ -4,6 +4,8 @@ StuftMe::Application.routes.draw do
 
   resources :plates
 
+  resources :tags, only: [:index]
+
   root to: "plates#index"
 
   get "/auth/:provider/callback" => "sessions#create"
