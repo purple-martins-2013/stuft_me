@@ -16,7 +16,7 @@
     <input type="radio" id="star1" name="plate_price" value="1" /><label for="star1" title="Super Cheap"></label>
     </fieldset>
 
-    <br><br><br><br>
+    <br><br><br>
     <%= label :tag_ids, "Tags" %>
     <%= collection_select :plate, :tag_ids, Tag.order(:name), :name, :name, {}, {multiple: true} %>
   </fieldset>

@@ -20,7 +20,7 @@ function CreatePlate() {
   $( "#dialog-form" ).dialog({
     dialogClass: "no-close",
     autoOpen: false,
-    height: 825,
+    height: 925,
     width: 800,
     modal: true,
     buttons: {
