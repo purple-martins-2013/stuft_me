@@ -1,10 +1,31 @@
 $(document).on("page:load", function(){
-  ShowTags();
-  $(".token-input-list-facebook").on("mouseover", UpdateTags());
+  if ($("#show-plate").length > 0) {
+    ShowTags();
+    $(".token-input-list-facebook").on("keyup", function(e) {
+      if (e.which == 13) {
+        UpdateTags();
+      }
+    });
+    $(".token-input-delete-token-facebook").on("click", UpdateTags);
+    $(".token-input-dropdown-facebook").on("click", function() {
+      UpdateTags();
+    });
+  }
 });
+
 $(document).ready(function(){
-  ShowTags();
-  $(".token-input-list-facebook").on("mouseover", UpdateTags());
+  if ($("#show-plate").length > 0) {
+    ShowTags();
+    $(".token-input-list-facebook").on("keyup", function(e) {
+      if (e.which == 13) {
+        UpdateTags();
+      }
+    });
+    $(".token-input-delete-token-facebook").on("click", UpdateTags);
+    $(".token-input-dropdown-facebook").on("click", function() {
+      UpdateTags();
+    });
+  }
 });
 
 function ShowTags() {

@@ -2,6 +2,8 @@
   <form>
     <%= label :tag_tokens, "Tags" %>
     <%= hidden_field_tag :plate_id, plate.id %>
-    <%= text_field_tag :tag_tokens, "", data: {load: plate.tags} %>
+    <% value_map = [] %>
+    <% plate.tags.order(:name).each {|tag| value_map << {id: tag.name, name: tag.name} } %>
+    <%= text_field_tag :tag_tokens, "", data: {load: value_map} %>
   </form>
 </div>
