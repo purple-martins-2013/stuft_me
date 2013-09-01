@@ -2,7 +2,7 @@ class PlatesController < ApplicationController
   before_filter :check_logged_in!, only: [:create, :new]
 
   def index
-    @all_plates = Plate.all
+    @all_plates = Plate.all.order(:drool_count).reverse
   end
 
   def show
