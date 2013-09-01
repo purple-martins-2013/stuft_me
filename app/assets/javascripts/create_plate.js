@@ -36,14 +36,14 @@ function CreatePlate() {
         } else {
           plate_price = "0";
         }
-        var tags = $("#tag_tokens").val().split(",");
+        var tag_tokens = $("#tag_tokens").val();
         debugger
         var data = {
           plate_url: plate_url,
           plate_description: plate_description,
           plate_location: plate_location,
           plate_price: plate_price,
-          plate_tags: tags
+          tokens: tag_tokens
         }
         $.ajax({url: url, 
           type: 'POST',

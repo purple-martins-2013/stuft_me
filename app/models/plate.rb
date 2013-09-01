@@ -1,4 +1,5 @@
 class Plate < ActiveRecord::Base
+  attr_reader :tag_tokens
 
   belongs_to :user
   has_many :drools

@@ -18,9 +18,10 @@ class PlatesController < ApplicationController
 
   def create
     @user = current_user
-    new_tags = []
-    params[:plate_tags].each {|tag| new_tags << Tag.find_or_create_by(name: tag)}
-    new_plate = current_user.plates.create(url: params[:plate_url], description: params[:plate_description], location: params[:plate_location], price: params[:plate_price], tags: new_tags)
+    plate_tags = params[:tokens].split(",")
+    plate = current_user.plates.create(url: params[:plate_url], description: params[:plate_description], location: params[:plate_location], price: params[:plate_price])
+    plate_tags.each {|tag| plate.tags << Tag.find_or_create_by(name: tag)}
+    plate.save
   end
 
   def drool
