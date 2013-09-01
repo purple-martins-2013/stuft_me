@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/milgner/compass-rails.git
-  revision: c86e7fd9c2605c80816a2f64a3fb8b7c3a09e494
-  branch: rails4
-  specs:
-    compass-rails (1.0.3)
-      compass (>= 0.12.2, < 0.14)
-
-GIT
   remote: https://github.com/bradphelan/jasminerice.git
   revision: 091349c27343bfa728b8e5745675f9ddbb7d9699
   specs:
@@ -56,12 +48,6 @@ GEM
       xpath (~> 2.0)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
-    chosen-rails (1.0.0)
-      coffee-rails (>= 3.2)
-      compass-rails (>= 1.0)
-      railties (>= 3.0)
-      sass-rails (>= 3.2)
-    chunky_png (1.2.8)
     coderay (1.0.9)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -71,10 +57,6 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     columnize (0.3.6)
-    compass (0.12.2)
-      chunky_png (~> 1.2)
-      fssm (>= 0.2.7)
-      sass (~> 3.1)
     database_cleaner (1.1.1)
     debug_inspector (0.0.2)
     debugger (1.6.1)
@@ -103,7 +85,6 @@ GEM
       faraday (>= 0.7.4, < 0.9)
     ffi (1.9.0)
     formatador (0.2.4)
-    fssm (0.2.10)
     guard (1.8.2)
       formatador (>= 0.2.4)
       listen (>= 1.0.0)
@@ -269,9 +250,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   capybara
-  chosen-rails
   coffee-rails (~> 4.0.0)
-  compass-rails!
   database_cleaner
   debugger
   factory_girl_rails

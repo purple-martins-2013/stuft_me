@@ -4,7 +4,7 @@ StuftMe::Application.routes.draw do
 
   resources :plates
 
-  resources :tags, only: [:index]
+  resources :tags, only: [:index, :create]
 
   root to: "plates#index"
 

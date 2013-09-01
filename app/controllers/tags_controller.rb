@@ -14,4 +14,12 @@ class TagsController < ApplicationController
     end
   end
 
+  def create
+    plate_tags = params[:tokens].split(",")
+    plate = Plate.find(params[:plate_id])
+    plate_tags.each {|tag| plate.tags << Tag.find_or_create_by(name: tag)}
+    plate.tags = plate.tags.uniq
+    plate.save
+  end
+
 end
