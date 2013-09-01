@@ -3,6 +3,9 @@ class PlatesController < ApplicationController
 
   def index
     @all_plates = Plate.all
+    Tag.find_or_create_by(name: "Indian")
+    Tag.find_or_create_by(name: "Spanish")
+    Tag.find_or_create_by(name: "Tibetan")
   end
 
   def show
@@ -15,7 +18,9 @@ class PlatesController < ApplicationController
 
   def create
     @user = current_user
-    current_user.plates.create(url: params[:plate_url], description: params[:plate_description], location: params[:plate_location], price: params[:plate_price])
+    new_tags = []
+    params[:plate_tags].each {|tag| new_tags << Tag.find_or_create_by(name: tag)}
+    new_plate = current_user.plates.create(url: params[:plate_url], description: params[:plate_description], location: params[:plate_location], price: params[:plate_price], tags: new_tags)
   end
 
   def drool

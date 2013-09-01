@@ -33,11 +33,13 @@ function CreatePlate() {
         } else {
           plate_price = "0";
         }
+        var tags = $("#plate_tag_ids").val();
         var data = {
           plate_url: plate_url,
           plate_description: plate_description,
           plate_location: plate_location,
-          plate_price: plate_price
+          plate_price: plate_price,
+          plate_tags: tags
         }
         $.ajax({url: url, 
           type: 'POST',
