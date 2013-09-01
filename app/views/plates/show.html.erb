@@ -7,7 +7,12 @@
   </div>
 </div>
 
-<%= button_to("drool", plates_drool_path(:id => params[:id]), :method => :post) %>
+<% unless drooled?(@plate) %>
+  <%= button_to("drool", plates_drool_path(:id => params[:id]), :method => :post) %>
+<% else %>
+  <%= button_to("undrool", plates_undrool_path(:id => params[:id]), :method => :put) %>
+<% end %>
+<%= @plate.drool_count %> people drooled over this plate.
 
 <%= render 'show_plate_pricing' %>
 <div class="col-md-4 centered shift-down">

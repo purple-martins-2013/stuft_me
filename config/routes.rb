@@ -2,15 +2,16 @@ StuftMe::Application.routes.draw do
 
   resources :users, only: [:index, :show, :new, :create, :destroy]
 
-  resources :plates
+  post 'plates/drool' => 'plates#drool'
+  put 'plates/undrool' => 'plates#undrool'
+  resources :plates 
 
   root to: "plates#index"
 
   get "/auth/:provider/callback" => "sessions#create"
   get "/signout" => "sessions#destroy", :as => :signout
 
-  post 'plates/drool' => 'plates#drool'
-  put 'plates/undrool' => 'plates#undrool'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

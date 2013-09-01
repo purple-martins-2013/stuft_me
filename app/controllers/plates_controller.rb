@@ -22,15 +22,30 @@ class PlatesController < ApplicationController
     @plate = Plate.find(params[:id])
 
     @plate.drool_count += 1
+    @plate.save
+    drool = Drool.find_by_user_id_and_plate_id(current_user.id, @plate.id)
+    if drool
+      drool.drool_status = true
+      drool.save
+    else
+      drool = Drool.create(user_id: current_user.id, plate_id: @plate.id, drool_status: true)
+    end
 
-    Drool.create(user_id: current_user.id, plate_id: @plate.id, drool_status: true)
     #current_user.drool!(@plate)
     redirect_to plate_path(@plate)
   end
 
   def undrool
     @plate = Plate.find(params[:id])
-    current_user.undrool(@plate)
+
+    @plate.drool_count -= 1
+    @plate.save
+
+    drool = Drool.find_by_user_id_and_plate_id(current_user.id, @plate.id)
+    drool.drool_status = false
+    drool.save
+    puts "*" *80
+    p drool
     redirect_to plate_path(@plate)
   end
 end
