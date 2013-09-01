@@ -19,7 +19,8 @@ class PlatesController < ApplicationController
   end
 
   def edit
-    @plate = Plate.find(params[:plate_id])
+    @plate = Plate.find(params[:id])
+    render :json @plate
   end
 
   def destroy
