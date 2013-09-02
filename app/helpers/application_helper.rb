@@ -7,4 +7,9 @@ module ApplicationHelper
     instagram_urls.select {|instagram_url, caption| !(plate_urls.include?(instagram_url)) }
   end
 
+  def drooled?(plate)
+    drool = Drool.find_by_user_id_and_plate_id(current_user.id, plate.id)
+    return drool ? drool.drool_status : false
+  end
+
 end

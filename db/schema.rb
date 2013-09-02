@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130831232617) do
+ActiveRecord::Schema.define(version: 20130901222101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20130831232617) do
     t.boolean  "drool_status"
     t.integer  "plate_id"
   end
+
+  add_index "drools", ["user_id", "plate_id"], name: "index_drools_on_user_id_and_plate_id", unique: true, using: :btree
 
   create_table "plates", force: true do |t|
     t.integer  "user_id"
