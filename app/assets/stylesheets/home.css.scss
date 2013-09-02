@@ -20,7 +20,7 @@ body {
   font-size: 19px;
 }
 
-.photo, .large-photo, .tiny-photo, .small-photo, .wall-photo, .show-profile-photo { 
+.photo, .large-photo, .tiny-photo, .small-photo, .your-small-photo, .wall-photo, .show-profile-photo { 
   background-color: #F9F9F9;
   border: 1px solid #CCCCCC;
   text-align: center;
@@ -33,7 +33,7 @@ body {
   font: 20px/1.4em Arial, sans-serif;
 }
 
-.photo, .tiny-photo, .small-photo {
+.photo, .tiny-photo, .small-photo, .your-small-photo {
   width: 29.5%;
 }
 
@@ -53,7 +53,7 @@ body {
   width: 32.7%;
 }
 
-.tiny-photo, .small-photo, .show-profile-photo {
+.tiny-photo, .small-photo, .your-small-photo, .show-profile-photo {
   padding: 3px;
   margin: 3px;
 }
@@ -67,14 +67,14 @@ body {
   margin-bottom: 1px;
 }
 
-.photo img, .small-photo img, .wall-photo img, .show-profile-photo img { 
+.photo img, .small-photo img, .your-small-photo img, .wall-photo img, .show-profile-photo img { 
   border: 1px solid #CCCCCC;
   vertical-align:middle; 
   width: 100%;
   position: relative;
 }
 
-.photo img, .small-photo img {
+.photo img, .small-photo img, .your-small-photo img {
   margin-bottom: 3px;
 }
 

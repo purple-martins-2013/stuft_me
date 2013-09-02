@@ -1,12 +1,13 @@
 StuftMe::Application.routes.draw do
 
-  resources :users, only: [:index, :show, :new, :create, :destroy]
-
   post 'plates/drool' => 'plates#drool'
   put 'plates/undrool' => 'plates#undrool'
+  
   resources :plates 
 
   resources :tags, only: [:index, :create]
+
+  resources :users, only: [:index, :show, :new, :create, :destroy]
 
   root to: "plates#index"
 
