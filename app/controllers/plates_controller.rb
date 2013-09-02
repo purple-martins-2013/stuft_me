@@ -18,6 +18,26 @@ class PlatesController < ApplicationController
     current_user.plates.create(url: params[:plate_url], description: params[:plate_description], location: params[:plate_location], price: params[:plate_price])
   end
 
+  def edit
+    @plate = Plate.find(params[:id])
+    render json: @plate
+  end
+
+  def update
+    @user = current_user
+    plate = Plate.find(params[:id])
+    plate.url, plate.description, plate.location, plate.price = params[:plate_url], params[:plate_description], params[:plate_location], params[:plate_price]
+    plate.save
+    render nothing: true
+  end
+
+  def destroy
+    @user = current_user
+    plate = Plate.find(params[:id])
+    plate.destroy if plate.user == @user
+    render "users/show"
+  end
+
   def drool
     @plate = Plate.find(params[:id])
 
