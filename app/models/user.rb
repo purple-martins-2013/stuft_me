@@ -10,15 +10,10 @@ class User < ActiveRecord::Base
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       user.username = auth["info"]["name"]
+      user.profile_pic =  Instagram.user(user.uid).profile_picture
     end
   end
 
-  def profile_pic
-    Instagram.user_recent_media(self.uid).each do |instagram|
-      @profile_pic = instagram.caption.from.profile_picture if instagram.caption
-    end
-    @profile_pic ||= "/images/placeholder.jpg"
-  end
 
   def instagram_url
     Instagram.user_recent_media(self.uid).each do |instagram|
