@@ -6,26 +6,21 @@ $(document).ready(function() {
   new EditAndDelete('#my-plates')
 });
 
-var plate_url, url;
-
-function EditPlate() {
-  $('.edit_plate').on("click", function(e) {
-    e.preventDefault();
-  });
-};
+var plate_url, url, plate_price;
 
 function EditAndDelete(container) {
   $(container).on('click', '#edit-btn', 
     function() {
-      var url = $(this).closest(".small-photo").data("url");
+      url = $(this).closest(".small-photo").data("url");
       $.ajax({url: url+"/edit",
         type: 'GET',
         dataType: 'json',
         success: function(response) {
           $("#selected_plate").attr("src", response.url);
+          plate_url = response.url
           $("#plate_description").val(response.description);
           $("#plate_location").val(response.location);
-          $("#star"+response.price).attr("checked", true);
+          $("#star"+response.price).prop("checked", true).button("refresh");
           $("#star"+response.price).addClass("active_star");
         }
       });
@@ -41,9 +36,7 @@ function EditAndDelete(container) {
       buttons: {
         "Save My Plate!": function() {
           var plate_description = $("#plate_description").val(),
-          plate_location = $("#plate_location").val(),
-          plate_price,
-          mini_url = plate_url.split(".").slice(-2,-1)[0].split("/").slice(-1)[0];
+          plate_location = $("#plate_location").val();
           if (document.querySelector('input[name="plate_price"]:checked')) {
             plate_price = document.querySelector('input[name="plate_price"]:checked').value;
           } else {
@@ -55,29 +48,25 @@ function EditAndDelete(container) {
             plate_location: plate_location,
             plate_price: plate_price
           }
-          $.ajax({url: url, 
+          $.ajax({url: url,
             type: 'PUT',
             beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
             data: data, 
             success: function() {
               $("#plate_description").val("");
               $("#plate_location").val("");
-              if (document.querySelector('input[name="plate_price"]:checked')) {
-                document.querySelector('input[name="plate_price"]:checked').checked = false;
-              }
-              $("#dialog-form").dialog("close");
-              $("#"+mini_url).find("img").addClass("plate-added");
-              $("#"+mini_url).replaceWith($("#"+mini_url).find("img"));
+              $("input").removeClass("active_star");
+              $("input").attr("checked", false);
+              $("#change-description"+url.split("/").slice(-1)[0]).text(plate_description);
+              $("#dialog-edit").dialog("close");
             }
           });
-        });
-      },
+        },
       Cancel: function() {
         $("#plate_description").val("");
         $("#plate_location").val("");
-        if (document.querySelector('input[name="plate_price"]:checked')) {
-          document.querySelector('input[name="plate_price"]:checked').checked = false;
-        }
+        $("input").removeClass("active_star");
+        $("input").attr("checked", false);
         $( this ).dialog( "close" );
       }
     }

@@ -11,7 +11,7 @@
       <% @user.plates.each do |plate| %>
         <%== my_profile ? "<div class='small-photo' data-url='/plates/#{plate.id}'>" : "<div class='your-small-photo'>" %>
           <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>
-          <%= plate.description %>
+          <span id="change-description<%=plate.id%>"><%= plate.description %></span>
         </div>
       <% end %>
     </div>
@@ -20,3 +20,5 @@
 <div class="col-sm-6">
   <h2><%= my_profile ? "Your Favorites" : "#{@user.username}'s Favorites" %></h2>
 </div>
+
+<%= render 'edit_plate' %>

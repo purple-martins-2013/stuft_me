@@ -20,7 +20,15 @@ class PlatesController < ApplicationController
 
   def edit
     @plate = Plate.find(params[:id])
-    render :json @plate
+    render json: @plate
+  end
+
+  def update
+    @user = current_user
+    plate = Plate.find(params[:id])
+    plate.url, plate.description, plate.location, plate.price = params[:plate_url], params[:plate_description], params[:plate_location], params[:plate_price]
+    plate.save
+    render nothing: true
   end
 
   def destroy
