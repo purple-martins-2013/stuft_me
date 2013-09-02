@@ -79,5 +79,11 @@ class PlatesController < ApplicationController
 
     render :partial => 'drool_bar'
   end
+
+  def comment
+    @plate = Plate.find(params[:id])
+    @plate.comments.create(content: params[:content])
+    render nothing: true
+  end
 end
 

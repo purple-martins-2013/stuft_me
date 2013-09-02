@@ -30,3 +30,13 @@
     </div>
   </div>
 </div>
+
+<%= button_to("Comment", plates_comment_path(@plate), id: "make-comment", class: "btn btn-primary") %>
+<%= render 'create_comment' %>
+
+<div id="comment-section">
+  <%== "<h2>Comments</h2>" unless @plate.comments.empty? %>
+  <% @plate.comments.each do |comment| %>
+    <%== "<p>#{comment.content}</p>" %>
+  <% end %>
+</div>

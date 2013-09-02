@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   has_many :plates
   has_many :drools
+  has_many :comments
 
   validates_presence_of :username, :uid, :provider, :profile_pic, :profile_url
 
