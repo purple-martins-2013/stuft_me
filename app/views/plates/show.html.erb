@@ -4,7 +4,7 @@
       <%= image_tag @plate.url, id: "selected_plate", class: "large-photo" %>
       <div class="text-center">
         <h1><%= @plate.description %></h1>
-        <h2><i>Find me at: <%= @plate.location %></i></h2>
+        <%== "<h2><i><b>#{@plate.location}</b></i></h2>" if @plate.location != "" %>
         <%= render 'show_plate_pricing' %>
         <%= render 'show_and_add_tags', plate: @plate %>
       </div>
@@ -36,13 +36,13 @@
     </div>
   </div>
   <div class="col-md-11 centered">
-    <%= button_to("Comment", plates_comment_path(@plate), id: "make-comment", class: "btn btn-primary") %>
+    <%= button_to("Add a comment", plates_comment_path(@plate), id: "make-comment", class: "btn btn-primary btn-xlarge right") %>
     <%= render 'create_comment' %>
 
     <div id="comment-section">
-      <%== "<h2>Comments</h2>" unless @plate.comments.empty? %>
+      <%== "<h1><b>Comments</b></h1>" unless @plate.comments.empty? %>
       <% @plate.comments.each do |comment| %>
-        <%== "<p>#{comment.content}</p>" %>
+        <%== "<h3 class='spaced'>#{comment.content}</h3>" %>
       <% end %>
     </div>
   </div>
