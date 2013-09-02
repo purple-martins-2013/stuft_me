@@ -2,7 +2,9 @@ StuftMe::Application.routes.draw do
 
   post 'plates/drool' => 'plates#drool'
   put 'plates/undrool' => 'plates#undrool'
-  
+
+  get 'plates/tags' => 'plates#get_tags'
+
   resources :plates 
 
   resources :tags, only: [:index, :create]
