@@ -17,3 +17,5 @@
 
 # Ignore coverage results
 coverage
+
+*.DS_Store
