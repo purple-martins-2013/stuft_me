@@ -21,5 +21,7 @@ describe Plate do
 
   it { should belong_to(:user) }
   it { should have_many(:drools) }
+  it { should have_many(:comments) }
+  it { should have_and_belong_to_many(:tags) }
 
 end
