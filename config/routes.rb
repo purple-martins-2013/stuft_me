@@ -2,6 +2,8 @@ StuftMe::Application.routes.draw do
 
   resources :users, only: [:index, :show, :new, :create, :destroy]
 
+  post 'plates/comment' => 'plates#comment'
+
   resources :plates
 
   root to: "plates#index"

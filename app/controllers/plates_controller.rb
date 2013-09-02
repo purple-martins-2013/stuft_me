@@ -33,5 +33,11 @@ class PlatesController < ApplicationController
     current_user.undrool(@plate)
     redirect_to plate_path(@plate)
   end
+
+  def comment
+    @plate = Plate.find(params[:id])
+    @plate.comments.create(content: params[:content])
+    render nothing: true
+  end
 end
 
