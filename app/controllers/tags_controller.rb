@@ -1,9 +1,9 @@
 class TagsController < ApplicationController
-  
+
   def index
     @tags = Tag.order(:name)
     value_map = []
-    tokens = @tags.tokens(params[:q]) 
+    tokens = @tags.tokens(params[:q]) if params[:q]
     if tokens.first.respond_to?(:each_value)
       value_map = tokens
     else
@@ -15,13 +15,10 @@ class TagsController < ApplicationController
   end
 
   def create
-    plate_tags = params[:tokens].split(",")
     plate = Plate.find(params[:plate_id])
     plate.tags = []
-    plate.save
-    plate_tags.each {|tag| plate.tags << Tag.find_or_create_by(name: tag)}
+    plate.add_tags(params[:tokens])
     plate.save
     render text: "placeholder"
   end
-
 end

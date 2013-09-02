@@ -15,10 +15,8 @@ class PlatesController < ApplicationController
   end
 
   def create
-    @user = current_user
-    plate_tags = params[:tokens].split(",")
     plate = current_user.plates.create(url: params[:plate_url], description: params[:plate_description], location: params[:plate_location], price: params[:plate_price])
-    plate_tags.each {|tag| plate.tags << Tag.find_or_create_by(name: tag)}
+    plate.add_tags(params[:tokens])
     plate.save
   end
 
@@ -28,21 +26,16 @@ class PlatesController < ApplicationController
   end
 
   def update
-    @user = current_user
     plate = Plate.find(params[:id])
-    plate.tags = []
-    plate.save
-    plate_tags = params[:tokens].split(",")
     plate.url, plate.description, plate.location, plate.price = params[:plate_url], params[:plate_description], params[:plate_location], params[:plate_price]
-    plate_tags.each {|tag| plate.tags << Tag.find_or_create_by(name: tag)}
+    plate.add_tags(params[:tokens])
     plate.save
     render nothing: true
   end
 
   def destroy
-    @user = current_user
     plate = Plate.find(params[:id])
-    plate.destroy if plate.user == @user
+    plate.destroy if plate.user == current_user
     render "users/show"
   end
 

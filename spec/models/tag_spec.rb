@@ -4,12 +4,19 @@ describe Tag do
 
   it {should validate_presence_of(:name)}
 
+  context "#initialize" do
+    it "Downcases the name of the tag before saving" do
+      tag = Tag.create(name: "This Is A Tag")
+      tag.name.should eq "this is a tag"
+    end
+  end
+
   context "#tokens" do
 
     before do
-      @blue = Tag.create(name:'Blue')
-      @yellow = Tag.create(name:'Yellow')
-      @green = Tag.create(name:'Green')
+      @great = Tag.create(name:'great')
+      @yellow = Tag.create(name:'yellow')
+      @green = Tag.create(name:'green')
     end
 
     it "returns an array" do
@@ -17,11 +24,11 @@ describe Tag do
     end
 
     it "returns an array with the existing matching tags" do
-      Tag.tokens('e').should include(@blue, @green)
+      Tag.tokens('Gre').should include(@great, @green)
     end
 
     it "doesn't return non matching tags" do
-      Tag.tokens('e').should_not include(@yellow)
+      Tag.tokens('Gre').should_not include(@yellow)
     end
 
     it "suggest creation of a new tag if the tag doesn't exist yet" do

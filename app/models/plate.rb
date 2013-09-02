@@ -30,8 +30,21 @@ class Plate < ActiveRecord::Base
 
   def ordered_tags
     value_map = []
-    tags.order(:name).each {|tag| value_map << {id: tag.name, name: tag.name}}
+    tags.order(:name).each {|tag| value_map << {id: tag.name, name: tag.name.capitalize}}
     value_map
   end
 
+  def add_tags(tags_string)
+    tags_string ||= ""
+    tags_array = tags_string.split(",")
+    tags_array.each do |tag_name|
+      add_tag(tag_name)
+    end
+  end
+
+  def add_tag(tag_name)
+    tag_name.downcase!
+    return if self.tags.find_by_name(tag_name)
+    self.tags << Tag.find_or_create_by(name: tag_name)
+  end
 end
