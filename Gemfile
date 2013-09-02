@@ -33,7 +33,7 @@ gem 'omniauth-instagram'
 
 gem 'rails_12factor', group: :production
 
-gem 'dotenv-rails', :groups => [:development, :test]
+
 
 
 group :doc do
@@ -55,6 +55,7 @@ group :development, :test do
   gem 'debugger'
   gem "jasminerice", :git => 'https://github.com/bradphelan/jasminerice.git'
   gem 'shoulda-matchers'
+  gem 'dotenv-rails'
 end
 
 group :test do
