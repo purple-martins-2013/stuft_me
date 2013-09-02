@@ -3,8 +3,8 @@ require "spec_helper"
 describe User do
 
   let (:mock_omniauth) { {"provider" => "instagram", "uid" => "1234567", "info" => { "name" => "test-user"}}}
-  
-  context '#create_with_omniauth' do 
+
+  context '#create_with_omniauth' do
 
     it "creates a new user" do
       User.create_with_omniauth(mock_omniauth)
@@ -26,18 +26,6 @@ describe User do
       mock_omniauth["provider"] = nil
       expect { User.create_with_omniauth(mock_omniauth) }.to raise_error(ActiveRecord::RecordInvalid)
     end
-
   end
 
-  # it "requires a username" do
-  #   expect { User.create! }.to raise_error
-  # end
-
-
-  # [10.5, nil, "blabla"].each do |type|
-  #   it "raises an 'TypeError' with #{type.class}" do
-  #     expect {User.uid = type }.to raise_error(TypeError)
-  #   end
-  # end
-  
 end
