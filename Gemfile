@@ -38,7 +38,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', "~> 2.0"
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'rb-fsevent'
   gem 'guard-rspec'
   gem 'guard-rails'
   gem 'guard-livereload'
