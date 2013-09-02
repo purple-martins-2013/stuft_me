@@ -2,12 +2,17 @@
   <% if @instagram_urls.empty? %>
     <h2 class="text-center">No new photos found -- go out and take some pictures of your favorite food!</h2>
   <% else %>
-    <% @instagram_urls.each do |instagram_url, caption| %>
-      <div class="photo">
-        <%= link_to image_tag(instagram_url), plates_path, id: "#{instagram_url.split(".")[-2].split("/").last}", class: "create_plate" %>
-        <%= caption %>
-      </div>
-    <% end %>
+    <div id="infinite-scroll">
+      <% @instagram_urls.each do |instagram_url, caption| %>
+        <div class="photo item">
+          <%= link_to image_tag(instagram_url), plates_path, id: "#{instagram_url.split(".")[-2].split("/").last}", class: "create_plate" %>
+          <%= caption %>
+        </div>
+      <% end %>
+    </div>
+    <nav id="page_nav">
+      <a href="page2.html"></a>
+    </nav>
   <% end %>
 
 <%= render 'create_plate' %>
