@@ -40,7 +40,7 @@
     <%= render 'create_comment' %>
 
     <div id="comment-section">
-      <%== "<h1><b>Comments</b></h1>" unless @plate.comments.empty? %>
+      <%== "<h1 id='comment-heading'><b>Comments</b></h1>" unless @plate.comments.empty? %>
       <% @plate.comments.each do |comment| %>
         <%== "<h3 class='spaced'>#{comment.content}</h3>" %>
       <% end %>
