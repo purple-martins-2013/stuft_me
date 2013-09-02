@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+include ApplicationHelper
+
 SampleUsers = [
   {username: "ashrod", provider: "instagram", uid: "3956455"},
   {username: "cannellevanille", provider: "instagram", uid: "3619966"},
@@ -24,11 +26,13 @@ SampleUsers = [
 ]
 
 SampleUsers.each do |sample_user|
+  sample_user[:profile_pic] = Instagram.user(sample_user[:uid]).profile_picture
+  sample_user[:profile_url] = "//instagram.com/" + sample_user[:username]
   User.create(sample_user)
 end
 
 User.all.each do |user|
   unique_instagram_urls_for(user).each do |url|
-    user.plates.create(url: url, drool_count: rand(0..975))
+    user.plates.create(url: url[0], drool_count: rand(975), description: ["Ratatouille", "Mom's Homemade Lasagna", "Corn on the Cob", "Raspberry Pie"].sample, location: ["Outback Steakhouse", "Cheesecake Factory", "California Pizza Kitchen", "Nobu"].sample)
   end
 end
