@@ -18,8 +18,9 @@ function HoverVoteable(container) {
         $(this).append("<h2 class='vote-text'>"+drool_count+" Drools</h2>");
       }
 
-    }).on("mouseleave", ".index-photo", function() {
-      $(this).removeClass("show-votes");
-      $(this).find(".vote-text").remove();
+  }).on("mouseleave", ".index-photo", function() {
+    $(this).removeClass("show-votes");
+    $(this).find(".vote-text").remove();
     });
+
 }
