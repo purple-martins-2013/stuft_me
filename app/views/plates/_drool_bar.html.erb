@@ -6,5 +6,6 @@
     <%= button_to("undrool", plates_undrool_path(:id => params[:id]), :method => :put, :class => "btn btn-danger", remote: true) %>
   <% end %>
 <% end %>
-  <%= @plate.drool_count %> people drooled over this plate.
+
+<%= @plate.drool_count %> people drooled over this plate.
 </div>
