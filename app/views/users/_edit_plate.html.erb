@@ -1,4 +1,4 @@
-<div id="dialog-edit" title="Make a New Plate!">
+<div id="dialog-edit" title="Edit your plate!">
   <%= image_tag("/", height: "500", id: "selected_plate") %>
   <form>
   <fieldset class="build-plate">
@@ -15,6 +15,10 @@
     <input type="radio" id="star2" name="plate_price" value="2" /><label for="star2" title="Good Deal"></label>
     <input type="radio" id="star1" name="plate_price" value="1" /><label for="star1" title="Super Cheap"></label>
     </fieldset>
+
+    <br><br><br>
+    <%= label :tag_tokens, "Tags" %>
+    <%= text_field_tag :tag_tokens %>
   </fieldset>
   </form>
 </div>

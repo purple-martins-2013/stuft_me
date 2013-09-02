@@ -25,4 +25,11 @@ class Plate < ActiveRecord::Base
   def make_tags_unique
     self.tags = tags.uniq
   end
+
+  def ordered_tags
+    value_map = []
+    tags.order(:name).each {|tag| value_map << {id: tag.name, name: tag.name}}
+    value_map
+  end
+
 end

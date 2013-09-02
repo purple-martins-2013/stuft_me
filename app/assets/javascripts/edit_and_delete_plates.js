@@ -6,7 +6,7 @@ $(document).ready(function() {
   new EditAndDelete('#my-plates')
 });
 
-var plate_url, url, plate_price;
+var plate_url, url, plate_price, ordered_tags;
 
 function EditAndDelete(container) {
   $(container).on('click', '#edit-btn', 
@@ -20,11 +20,23 @@ function EditAndDelete(container) {
           plate_url = response.url
           $("#plate_description").val(response.description);
           $("#plate_location").val(response.location);
-          $("#star"+response.price).prop("checked", true).button("refresh");
-          $("#star"+response.price).addClass("active_star");
+          plate_price = response.price;
         }
       });
-      $("#dialog-edit").dialog("open");
+      $.ajax({url: "/plates/tags",
+        type: 'GET',
+        data: "id="+url.split("/").slice(-1)[0],
+        dataType: 'json',
+        success: function(response) {
+          ordered_tags = response;
+          $("#dialog-edit").dialog("open");
+          $("#star"+plate_price).prop("checked", true).button("refresh");
+          $("#star"+plate_price).addClass("active_star");
+          $("#tag_tokens").tokenInput('/tags.json', {
+            theme: 'facebook', prePopulate: ordered_tags
+          });
+        }
+      });
     });
 
     $( "#dialog-edit" ).dialog({
@@ -42,11 +54,13 @@ function EditAndDelete(container) {
           } else {
             plate_price = "0";
           }
+          var tag_tokens = $("#tag_tokens").val();
           var data = {
             plate_url: plate_url,
             plate_description: plate_description,
             plate_location: plate_location,
-            plate_price: plate_price
+            plate_price: plate_price,
+            tokens: tag_tokens
           }
           $.ajax({url: url,
             type: 'PUT',
@@ -58,6 +72,8 @@ function EditAndDelete(container) {
               $("input").removeClass("active_star");
               $("input").attr("checked", false);
               $("#change-description"+url.split("/").slice(-1)[0]).text(plate_description);
+              $("li.token-input-token-facebook").remove();
+              $("ul.token-input-list-facebook").remove();
               $("#dialog-edit").dialog("close");
             }
           });
@@ -67,6 +83,8 @@ function EditAndDelete(container) {
         $("#plate_location").val("");
         $("input").removeClass("active_star");
         $("input").attr("checked", false);
+        $("li.token-input-token-facebook").remove();
+        $("ul.token-input-list-facebook").remove();
         $( this ).dialog( "close" );
       }
     }
