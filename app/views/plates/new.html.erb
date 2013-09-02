@@ -4,7 +4,7 @@
   <% else %>
     <div id="infinite-scroll">
       <% @instagram_urls.each do |instagram_url, caption| %>
-        <div class="photo item">
+        <div class="photo infinite item">
           <%= link_to image_tag(instagram_url), plates_path, id: "#{instagram_url.split(".")[-2].split("/").last}", class: "create_plate" %>
           <%= caption %>
         </div>

@@ -1,15 +1,21 @@
 <h1 class="text-center">Fellow Stufters</h1>
 
-<% @users.each do |user| %>
-  <div class="photo">
-    <%= link_to image_tag(user.profile_pic, :type => :instagram_name, :crop => :fill), user %>
-    <p><%= "#{user.username.capitalize}" %></p>
-    <% user.plates.each_with_index do |plate, index| %>
-      <% if index < 3 %>
-        <div class="tiny-photo">
-          <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>
-        </div>
+<div id="infinite-scroll">
+  <% @users.each do |user| %>
+    <div class="photo infinite item">
+      <%= link_to image_tag(user.profile_pic, :type => :instagram_name, :crop => :fill), user %>
+      <p><%= "#{user.username.capitalize}" %></p>
+      <% user.plates.each_with_index do |plate, index| %>
+        <% if index < 3 %>
+          <div class="tiny-photo">
+            <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-<% end %>
+    </div>
+  <% end %>
+</div>
+
+<nav id="page_nav">
+  <a href="page2.html"></a>
+</nav>

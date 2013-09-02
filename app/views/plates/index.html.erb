@@ -5,7 +5,7 @@
 
   <div id="infinite-scroll">
     <% @all_plates.each do |plate| %>
-    <div class="wall-photo item">
+    <div class="wall-photo infinite item">
       <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}", class: "index-photo", "data-drools" => plate.drool_count %>
     </div>
     <% end %>
