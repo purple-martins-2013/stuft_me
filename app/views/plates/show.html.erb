@@ -1,42 +1,49 @@
 <div id="show-plate">
-  <div class="col-md-8 centered">
-    <%= image_tag @plate.url, id: "selected_plate", class: "large-photo" %>
-    <div class="text-center">
-      <h1><%= @plate.description %></h1>
-      <h2><i>Find me at: <%= @plate.location %></i></h2>
-      <%= render 'show_plate_pricing' %>
-      <%= render 'show_and_add_tags', plate: @plate %>
-    </div>
-  </div>
-
-  <div id="drool-bar">
-    <%= render 'drool_bar' %>
-  </div>
-
-  <div class="col-md-4 centered shift-down">
-    <div class="text-center">
-      <h2>Uploaded by: </h2>
-      <div class="show-profile-photo">
-        <%= link_to image_tag(@plate.user.profile_pic, :type => :instagram_name, :crop => :fill, :class => "show-profile-photo"), @plate.user %>
-        <h3><%= "#{@plate.user.username.capitalize}" %></h3>
-        <% @plate.user.plates.each_with_index do |plate, index| %>
-          <% if index < 3 %>
-            <div class="tiny-photo">
-              <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>
-            </div>
-          <% end %>
-        <% end %>
+  <row>
+    <div class="col-md-8 centered">
+      <%= image_tag @plate.url, id: "selected_plate", class: "large-photo" %>
+      <div class="text-center">
+        <h1><%= @plate.description %></h1>
+        <h2><i>Find me at: <%= @plate.location %></i></h2>
+        <%= render 'show_plate_pricing' %>
+        <%= render 'show_and_add_tags', plate: @plate %>
       </div>
     </div>
+
+    <div class="col-md-4 centered shift-down">
+      <div class="text-center">
+        <h2>Uploaded by: </h2>
+        <div class="show-profile-photo">
+          <%= link_to image_tag(@plate.user.profile_pic, :type => :instagram_name, :crop => :fill, :class => "show-profile-photo"), @plate.user %>
+          <h3><%= "#{@plate.user.username.capitalize}" %></h3>
+          <% @plate.user.plates.each_with_index do |plate, index| %>
+            <% if index < 3 %>
+              <div class="tiny-photo">
+                <%= link_to image_tag(plate.url), plate_path(plate), id: "#{plate.id}" %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>    
+  </row>
+</div>
+
+<row>
+  <div class="col-md-4 centered shift-down">
+    <div id="drool-bar" class="col-md-12 centered shift-down">
+      <%= render 'drool_bar' %>
+    </div>
   </div>
-</div>
+  <div class="col-md-11 centered">
+    <%= button_to("Comment", plates_comment_path(@plate), id: "make-comment", class: "btn btn-primary") %>
+    <%= render 'create_comment' %>
 
-<%= button_to("Comment", plates_comment_path(@plate), id: "make-comment", class: "btn btn-primary") %>
-<%= render 'create_comment' %>
-
-<div id="comment-section">
-  <%== "<h2>Comments</h2>" unless @plate.comments.empty? %>
-  <% @plate.comments.each do |comment| %>
-    <%== "<p>#{comment.content}</p>" %>
-  <% end %>
-</div>
+    <div id="comment-section">
+      <%== "<h2>Comments</h2>" unless @plate.comments.empty? %>
+      <% @plate.comments.each do |comment| %>
+        <%== "<p>#{comment.content}</p>" %>
+      <% end %>
+    </div>
+  </div>
+</row>

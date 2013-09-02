@@ -17,3 +17,20 @@ div.token-input-dropdown-facebook {
   font-size: 25px;
   width: 650px;
 }
+
+.btn-xlarge {
+  margin-left: 35%;
+  padding: 18px 28px;
+  font-size: 22px;
+  line-height: normal;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+}
+
+.colorful {
+  color: green;
+  margin-left: 5.5%;
+  font-style: italic;
+  font-weight: bold;
+}
