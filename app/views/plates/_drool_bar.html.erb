@@ -1,9 +1,9 @@
 <div id="drool-bar">
 <% if current_user %>
   <% unless drooled?(@plate) %>
-    <%= button_to("drool", plates_drool_path(:id => params[:id]), :method => :post, :class => "btn btn-success" ) %>
+    <%= button_to("drool", plates_drool_path(:id => params[:id]), :method => :post, :class => "btn btn-success" , remote: true) %>
   <% else %>
-    <%= button_to("undrool", plates_undrool_path(:id => params[:id]), :method => :put, :class => "btn btn-danger") %>
+    <%= button_to("undrool", plates_undrool_path(:id => params[:id]), :method => :put, :class => "btn btn-danger", remote: true) %>
   <% end %>
 <% end %>
   <%= @plate.drool_count %> people drooled over this plate.

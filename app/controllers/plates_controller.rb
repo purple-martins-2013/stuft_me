@@ -1,5 +1,6 @@
 class PlatesController < ApplicationController
   before_filter :check_logged_in!, only: [:create, :new]
+  respond_to :html, :json
 
   def index
     @all_plates = Plate.all.order(:drool_count).reverse
@@ -31,8 +32,7 @@ class PlatesController < ApplicationController
       drool = Drool.create(user_id: current_user.id, plate_id: @plate.id, drool_status: true)
     end
 
-    #current_user.drool!(@plate)
-    redirect_to plate_path(@plate)
+    render :partial => 'drool_bar'
   end
 
   def undrool
@@ -44,9 +44,8 @@ class PlatesController < ApplicationController
     drool = Drool.find_by_user_id_and_plate_id(current_user.id, @plate.id)
     drool.drool_status = false
     drool.save
-    puts "*" *80
-    p drool
-    redirect_to plate_path(@plate)
+
+    render :partial => 'drool_bar'
   end
 end
 
