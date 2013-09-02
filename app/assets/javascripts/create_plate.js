@@ -14,12 +14,15 @@ function CreatePlate() {
     plate_url = $(this).find("img").attr("src");
     $("#dialog-form").dialog("open");
     $("#selected_plate").attr("src", plate_url);
+    $('#tag_tokens').tokenInput('/tags.json', {
+      theme: 'facebook'
+    });
   });
 
   $( "#dialog-form" ).dialog({
     dialogClass: "no-close",
     autoOpen: false,
-    height: 825,
+    height: 925,
     width: 800,
     modal: true,
     buttons: {
@@ -33,11 +36,13 @@ function CreatePlate() {
         } else {
           plate_price = "0";
         }
+        var tag_tokens = $("#tag_tokens").val();
         var data = {
           plate_url: plate_url,
           plate_description: plate_description,
           plate_location: plate_location,
-          plate_price: plate_price
+          plate_price: plate_price,
+          tokens: tag_tokens
         }
         $.ajax({url: url, 
           type: 'POST',
@@ -49,6 +54,8 @@ function CreatePlate() {
             if (document.querySelector('input[name="plate_price"]:checked')) {
               document.querySelector('input[name="plate_price"]:checked').checked = false;
             }
+            $("li.token-input-token-facebook").remove();
+            $("ul.token-input-list-facebook").remove();
             $("#dialog-form").dialog("close");
             $("#"+mini_url).find("img").addClass("plate-added");
             $("#"+mini_url).replaceWith($("#"+mini_url).find("img"));
@@ -62,6 +69,8 @@ function CreatePlate() {
         if (document.querySelector('input[name="plate_price"]:checked')) {
           document.querySelector('input[name="plate_price"]:checked').checked = false;
         }
+        $("li.token-input-token-facebook").remove();
+        $("ul.token-input-list-facebook").remove();
         $( this ).dialog( "close" );
       }
     }
