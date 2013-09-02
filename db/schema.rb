@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20130902005901) do
     t.integer  "plate_id"
   end
 
+  add_index "drools", ["user_id", "plate_id"], name: "index_drools_on_user_id_and_plate_id", unique: true, using: :btree
+
   create_table "plates", force: true do |t|
     t.integer  "user_id"
     t.string   "url"
