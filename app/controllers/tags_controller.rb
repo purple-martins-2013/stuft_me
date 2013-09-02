@@ -21,7 +21,7 @@ class TagsController < ApplicationController
     plate.save
     plate_tags.each {|tag| plate.tags << Tag.find_or_create_by(name: tag)}
     plate.save
-    render text: "placeholder"
+    render nothing: true
   end
 
 end
