@@ -6,8 +6,11 @@ describe User do
   it {should validate_presence_of(:provider)}
   it {should validate_presence_of(:uid)}
   it {should validate_presence_of(:username)}
+  it {should validate_presence_of(:profile_pic)}
+  it {should validate_presence_of(:profile_url)}
   it {should have_many(:plates)}
   it {should have_many(:drools)}
+  it {should have_many(:comments)}
 
   context '#create_with_omniauth' do
 

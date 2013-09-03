@@ -19,6 +19,6 @@ class TagsController < ApplicationController
     plate.tags = []
     plate.add_tags(params[:tokens])
     plate.save
-    render text: "placeholder"
+    render nothing: true
   end
 end

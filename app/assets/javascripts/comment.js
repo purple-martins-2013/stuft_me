@@ -35,7 +35,10 @@ function CreateComment() {
           data: data, 
           success: function() {
             $("#comment-form").dialog("close");
-            $("#comment-section").append("<p>"+content+"</p>");
+            if ($("#comment-heading").length == 0) {
+              $("#comment-section").append("<h1><b>Comments</b></h1>");
+            }
+            $("#comment-section").append("<h3 class='spaced'>"+content+"</h3>");
           }
         });
       },

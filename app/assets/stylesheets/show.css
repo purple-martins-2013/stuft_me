@@ -17,3 +17,40 @@ div.token-input-dropdown-facebook {
   font-size: 25px;
   width: 650px;
 }
+
+.btn-xlarge {
+  margin-left: 35%;
+  padding: 25px 35px;
+  font-size: 28px;
+  font-weight: bold;
+  line-height: normal;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+}
+
+.colorful {
+  color: green;
+  margin-left: 5.5%;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.right {
+  margin-top: 50px;
+  float: right;
+}
+
+#comment-section {
+  padding: 100px 0 0 25px;
+}
+
+#comment-section h1 {
+  font-size: 40px;
+  color: #117;
+}
+
+.spaced {
+  padding: 15px 0 35px 25px;
+  border-bottom: 2px solid #ddd;
+}

@@ -31,6 +31,11 @@ gem 'instagram'
 # gem 'omniauth'
 gem 'omniauth-instagram'
 
+gem 'rails_12factor', group: :production
+
+gem 'dotenv-rails', :groups => [:development, :test]
+
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -38,7 +43,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', "~> 2.0"
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'rb-fsevent'
   gem 'guard-rspec'
   gem 'guard-rails'
   gem 'guard-livereload'

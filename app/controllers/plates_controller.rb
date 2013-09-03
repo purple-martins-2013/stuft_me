@@ -3,7 +3,8 @@ class PlatesController < ApplicationController
   respond_to :html, :json
 
   def index
-    @all_plates = Plate.all.order(:drool_count).reverse
+    @plates = Plate.all
+    @all_plates = @plates.order(:drool_count).reverse
   end
 
   def show

@@ -1,10 +1,18 @@
 
 <% if current_user %>
   <% unless drooled?(@plate) %>
-    <%= button_to("drool", plates_drool_path(:id => params[:id]), :method => :post, :class => "btn btn-success" , remote: true) %>
+    <%= button_to("drool", plates_drool_path(:id => params[:id]), :method => :post, :class => "btn btn-success btn-xlarge" , remote: true) %>
   <% else %>
-    <%= button_to("undrool", plates_undrool_path(:id => params[:id]), :method => :put, :class => "btn btn-danger", remote: true) %>
+    <%= button_to("undrool", plates_undrool_path(:id => params[:id]), :method => :put, :class => "btn btn-danger btn-xlarge", remote: true) %>
   <% end %>
 <% end %>
 
-<%= @plate.drool_count %> people drooled over this plate.
+<h2 class="colorful">
+  <% if @plate.drool_count == 0 %>
+    No one's drooled over this plate yet -- be the first!
+  <% elsif @plate.drool_count == 1 %>
+    One person's drooled over this plate -- be a pioneer!
+  <% else %>
+    <%= @plate.drool_count %> people have drooled over this plate so far!  Join the crowd!
+  <% end %>
+</h2>
