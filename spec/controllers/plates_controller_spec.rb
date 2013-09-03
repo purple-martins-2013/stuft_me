@@ -34,14 +34,14 @@ describe PlatesController do
       let(:instagram_urls) { ["url1", "url2"] }
       before(:each) do
         login_as(user)
-        PlatesController.stub(:unique_instagram_urls_for).with(user).and_return(instagram_urls)
+        PlatesController.any_instance.stub(:unique_instagram_urls_for).with(user).and_return([instagram_urls])
         get :new
       end
       it "renders the :new template" do
         response.should render_template("new")
       end
       it "assigns @instagram_urls from the InstagramService" do
-        expect(assigns(:instagram_urls)).to eq [["http://distilleryimage6.s3.amazonaws.com/766bc54c96f011e2967b22000aa80146_7.jpg", "Just for FUN"]]
+        expect(assigns(:instagram_urls)).to eq [instagram_urls]
       end
     end
     context "when not logged in" do
@@ -129,26 +129,30 @@ describe PlatesController do
   end
 
   describe "POST #create" do
-    let(:plate) { FactoryGirl.build(:plate) }
-    context "when logged in" do 
+    let(:plate) { FactoryGirl.attributes_for(:plate) }
+    context "when logged in" do
       include LoginHelper
       let(:user) { FactoryGirl.create(:user)}
       before { login_as(user) }
 
       context "with unique url" do
         it "saves the new plate for the user" do
-          plate.user = user
-          plate.save
-          post :create, plate_url: plate.url, :tokens => ""
-          user.plates.first.url.should eq plate.url
+          post :create, plate: plate, :tokens => ""
+
+          created_plate = user.plates.first
+          created_plate.url.should eq plate[:url]
+          created_plate.description.should eq plate[:description]
+          created_plate.location.should eq plate[:location]
+          created_plate.price.should eq plate[:price]
         end
       end
 
 
       context "with repeat url" do
         it "does not save the new plate in the database" do
-          duplicate_plate = FactoryGirl.create :plate, url: plate.url
-          post :create, plate_url: plate.url, :tokens => ""
+          duplicate_plate = FactoryGirl.create :plate, url: plate[:url]
+
+          post :create, plate: plate, :tokens => ""
           Plate.all.length.should eq 1
         end
       end
@@ -156,12 +160,12 @@ describe PlatesController do
 
     context "when not logged in" do
       it "redirects to the root path" do
-        post :create, plate_url: plate.url
+        post :create, plate_url: plate[:url]
         response.should redirect_to(root_path)
       end
 
       it "flashes a you must signin to create a plate" do
-        post :create, plate_url: plate.url
+        post :create, plate_url: plate[:url]
         flash[:error].should eq 'You must be signed in to do that!'
       end
     end

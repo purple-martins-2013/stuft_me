@@ -12,9 +12,6 @@ gem 'sass-rails', '~> 4.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
-
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -53,7 +50,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'debugger'
-  gem "jasminerice", :git => 'https://github.com/bradphelan/jasminerice.git'
+  gem "jasmine-rails"
   gem 'shoulda-matchers'
 end
 

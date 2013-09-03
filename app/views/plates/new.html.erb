@@ -15,6 +15,6 @@
     </nav>
   <% end %>
 
-<%= render 'create_plate' %>
+  <%= render 'create_plate', locals: { plate: current_user.plates.build } %>
 
 <% end %>

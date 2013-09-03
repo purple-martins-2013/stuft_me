@@ -1,9 +1,16 @@
 <div id="dialog-form" title="Make a New Plate!">
   <%= image_tag("/", height: "500", id: "selected_plate") %>
+  <%= form_for plate  do | f | %>
+    <%= f.fieldset %>
+      <%= f.label :description, "What is this?" %>
+      <%= f.text :description %>
+      <%= f.text :location %>
+    <% end %>
+  <% end %>
   <form>
   <fieldset class="build-plate">
     <label for="plate_description">What is this?</label>
-    <input type="text" name="plate_description" id="plate_description" class="text ui-widget-content ui-corner-all" /><br>
+    <input type="text" class="plate_description" name="plate[description]" id="plate_description" class="text ui-widget-content ui-corner-all" /><br>
     <label for="plate_location">Where'd you get stuft?</label>
     <input type="text" name="plate_location" id="plate_location" value="" class="text ui-widget-content ui-corner-all" /><br>
     <fieldset class="rating">

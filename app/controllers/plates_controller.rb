@@ -16,7 +16,7 @@ class PlatesController < ApplicationController
   end
 
   def create
-    plate = current_user.plates.create(url: params[:plate_url], description: params[:plate_description], location: params[:plate_location], price: params[:plate_price])
+    plate = current_user.plates.create(plate_params)
     plate.add_tags(params[:tokens])
     plate.save
   end
@@ -78,6 +78,12 @@ class PlatesController < ApplicationController
     @plate = Plate.find(params[:id])
     @plate.comments.create(content: params[:content])
     render nothing: true
+  end
+
+  private
+
+  def plate_params
+    params.require(:plate).permit(:url, :description, :location, :price)
   end
 end
 

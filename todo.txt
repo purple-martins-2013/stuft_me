@@ -1,0 +1,7 @@
+3. Jasmine + Ajax
+
+4. Refactor our forms to not have weird unerscores in all the params :(
+2. How do we write integration tests?! (Controller? Capybara?)
+
+AN EXERCISE FOR THE READER
+1. Don't hit instagram in test https://github.com/intridea/omniauth/wiki/Integration-Testing

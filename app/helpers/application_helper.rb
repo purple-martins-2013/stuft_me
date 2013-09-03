@@ -5,15 +5,6 @@ module ApplicationHelper
     page_1 = Instagram.user_recent_media(user.uid)
     instagrams << page_1
 
-    # page_1_max_id, page_2_max_id = true, true
-    # while (page_2_max_id && page_1_max_id)
-    #   page_2_max_id = page_1.pagination.next_max_id
-    #   page_2 = Instagram.user_recent_media(user.uid, :max_id => page_2_max_id ) unless page_2_max_id.nil?
-    #   instagrams << page_2 unless page_2_max_id.nil?
-    #   page_1_max_id = page_2.pagination.next_max_id
-    #   page_1 = Instagram.user_recent_media(user.uid, :max_id => page_1_max_id ) unless page_1_max_id.nil?
-    #   instagrams << page_1 unless page_1_max_id.nil?
-    # end
     instagrams.flatten!(1)
 
     instagram_urls = instagrams.map {|instagram| instagram.caption ? [instagram.images.standard_resolution.url, instagram.caption.text] : [instagram.images.standard_resolution.url, "<Untitled>"]}
