@@ -4,7 +4,7 @@ describe "views" do
   let(:user) { FactoryGirl.create(:user) }
   before(:each) do
     2.times do |index|
-      Plate.create(user: user, url: "http://gallery.photo.net/photo/175115#{sprintf '%02d', index}-md.jpg", description: "Once in a lifetime #{index}", location: "Walla Walla #{index}", price: "3")
+      FactoryGirl.create(:plate, user: user)
     end
   end
 
@@ -16,7 +16,7 @@ describe "views" do
     it "should allow users to click on plates for more information" do
       visit root_path
       click_link("#{plate.id}")
-      current_url == plate_path(plate)
+      expect(current_url).to eq plate_path(plate)
     end
   end
 
@@ -25,15 +25,9 @@ describe "views" do
       visit plate_path(plate)
     end
 
-    it "shows plate description" do
+    it "shows plate information" do
       page.should have_content plate.description
-    end
-
-    it "shows plate location" do
       page.should have_content plate.location
-    end
-
-    it "shows plate price" do
       expect(page).to have_selector('#star3.active_star')
     end
   end

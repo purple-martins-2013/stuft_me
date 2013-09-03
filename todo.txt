@@ -1,7 +1,7 @@
-3. Jasmine + Ajax
-
-4. Refactor our forms to not have weird unerscores in all the params :(
+3. Jasmine + Ajax, look into jasmine-rails, jasmine-fixture, and
+   jasmine-stealth. They make testing ajax super easy
+4. Refactor our forms to not have weird unerscores in all the params :(. If you
+   *must* have crazy forms, use simple_form, though you don't need it from what I
+   can tell.
 2. How do we write integration tests?! (Controller? Capybara?)
-
-AN EXERCISE FOR THE READER
 1. Don't hit instagram in test https://github.com/intridea/omniauth/wiki/Integration-Testing
