@@ -33,6 +33,8 @@ gem 'omniauth-instagram'
 
 gem 'rails_12factor', group: :production
 
+gem 'newrelic_rpm'
+
 
 
 
